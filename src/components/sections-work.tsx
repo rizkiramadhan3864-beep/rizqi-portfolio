@@ -34,9 +34,9 @@ function ExperienceCollage({ photos, label }: { photos: string[]; label: string 
       {frames.map((position, i) => (
         <div
           key={position}
-          className={`absolute bg-white p-[3%] shadow-[0_10px_24px_-10px_rgb(0_0_0/0.35)] ${position}`}
+          className={`absolute rounded-xl bg-white p-[3%] shadow-[0_18px_40px_-24px_rgb(14_58_47_/_0.35)] ${position}`}
         >
-          <div className="aspect-square overflow-hidden bg-ivory">
+          <div className="aspect-square overflow-hidden rounded-lg bg-ivory">
             {photos[i] && (
               <img
                 src={photos[i]}
@@ -59,18 +59,18 @@ function ExperienceCollage({ photos, label }: { photos: string[]; label: string 
 
 export function Experience() {
   return (
-    <section id="experience" aria-labelledby="experience-title" className="py-24 lg:py-32">
+    <section id="experience" aria-labelledby="experience-title" className="bg-ivory py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <header className="mx-auto max-w-3xl text-center" {...revealProps()}>
           <h2
             id="experience-title"
-            className="font-serif text-[2.4rem] leading-[1.05] tracking-[-0.015em] text-forest sm:text-5xl lg:text-[3.6rem]"
+            className="font-serif text-[clamp(2rem,1.4rem+2.6vw,3.25rem)] leading-[1.08] tracking-[-0.015em] text-forest"
           >
             Experience
           </h2>
         </header>
 
-        <ol className="mt-14">
+        <ol className="mt-12 lg:mt-14">
           {experiences.map((exp, i) => (
             <li
               key={exp.role + exp.period}
@@ -84,21 +84,21 @@ export function Experience() {
 
                 <div className="lg:col-span-7">
                   <div className="flex flex-wrap items-center gap-3">
-                    <p className="font-mono text-[0.78rem] text-ink-soft">{exp.period}</p>
+                    <p className="font-mono text-[1.0625rem] text-ink-soft">{exp.period}</p>
                     {exp.current && (
-                      <p className="inline-flex items-center gap-1.5 rounded-full bg-sage-soft px-2.5 py-1 font-mono text-[0.66rem] uppercase tracking-[0.12em] text-forest">
+                      <p className="inline-flex items-center gap-1.5 rounded-full bg-sage-soft px-3 py-1 font-mono text-[0.75rem] uppercase tracking-[0.1em] text-forest">
                         <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-forest" />
                         Current role
                       </p>
                     )}
                   </div>
 
-                  <h3 className="mt-3 font-serif text-[1.9rem] leading-tight text-forest">{exp.role}</h3>
-                  <p className="mt-1.5 font-medium text-charcoal">{exp.organization}</p>
+                  <h3 className="mt-3 font-serif text-[clamp(1.35rem,1.15rem+0.8vw,1.75rem)] leading-tight text-forest sm:text-3xl">{exp.role}</h3>
+                  <p className="mt-1.5 text-[1.0625rem] leading-[1.7] font-medium text-charcoal">{exp.organization}</p>
 
                   <ul className="mt-5 space-y-2.5">
                     {exp.points.map((point) => (
-                      <li key={point} className="flex gap-3 leading-relaxed text-ink-soft">
+                      <li key={point} className="flex gap-3 text-[1.0625rem] leading-[1.7] text-ink-soft">
                         <span aria-hidden="true" className="mt-[0.7em] h-px w-3 shrink-0 bg-terracotta" />
                         {point}
                       </li>
@@ -106,12 +106,12 @@ export function Experience() {
                   </ul>
 
                   <div className="mt-7">
-                    <p className="eyebrow text-[0.68rem] text-ink-soft">Skills gained</p>
+                    <p className="eyebrow text-[0.75rem] tracking-[0.1em] text-ink-soft">Skills gained</p>
                     <ul className="mt-3 grid grid-cols-2 gap-2.5 sm:grid-cols-3">
                       {(exp.skills ?? []).map((skill) => (
                         <li
                           key={skill}
-                          className="rounded-xl border border-forest/15 bg-paper px-3.5 py-3 text-sm font-semibold leading-snug text-forest"
+                          className="flex items-center justify-center text-center rounded-xl border border-rule bg-paper px-3 py-1.5 text-[0.875rem] font-semibold leading-snug text-forest shadow-xs"
                         >
                           {skill}
                         </li>
@@ -185,8 +185,8 @@ function PartnerEmblem({ name }: { name: string }) {
 
   // Enterprise / Company / MSMB emblem
   return (
-    <svg viewBox="0 0 48 48" className="h-10 w-10 sm:h-12 sm:w-12 text-[#9B5132]" fill="none" stroke="currentColor" strokeWidth="1.5">
-      <rect x="8" y="8" width="32" height="32" rx="9" fill="#9B5132" fillOpacity="0.12" strokeWidth="1.5" />
+    <svg viewBox="0 0 48 48" className="h-10 w-10 sm:h-12 sm:w-12 text-[#12707F]" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <rect x="8" y="8" width="32" height="32" rx="9" fill="#12707F" fillOpacity="0.12" strokeWidth="1.5" />
       <path d="M 15 32 L 24 16 L 33 32" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
       <circle cx="24" cy="20" r="2.5" fill="currentColor" />
       <path d="M 19 26 H 29" strokeWidth="1.8" />
@@ -292,8 +292,8 @@ function ImagePlaceholder({ className = '' }: { className?: string }) {
 function DetailSection({ heading, children }: { heading: string; children: React.ReactNode }) {
   return (
     <section className="border-t border-rule pt-7">
-      <h4 className="eyebrow text-[0.72rem] text-terracotta-ink">{heading}</h4>
-      <div className="mt-3 space-y-3 leading-relaxed text-ink-soft">{children}</div>
+      <h4 className="eyebrow text-[0.75rem] tracking-[0.1em] text-terracotta-ink">{heading}</h4>
+      <div className="mt-3 space-y-3 text-[1.0625rem] leading-[1.7] max-w-[65ch] text-ink-soft">{children}</div>
     </section>
   )
 }
@@ -469,7 +469,7 @@ function ToolChipList({ items }: { items: string[] }) {
       {items.map((item) => (
         <li
           key={item}
-          className="inline-flex items-center gap-2 rounded-full border border-forest/15 bg-paper px-3.5 py-1.5 text-sm font-medium text-charcoal shadow-xs transition-colors hover:border-forest/30"
+          className="inline-flex items-center gap-2 rounded-xl border border-rule bg-paper px-3.5 py-1.5 text-[0.875rem] font-medium text-charcoal shadow-xs transition-colors hover:border-forest/30"
         >
           <ToolIcon name={item} />
           <span>{item}</span>
@@ -637,7 +637,7 @@ function ChipList({ items }: { items: string[] }) {
       {items.map((item) => (
         <li
           key={item}
-          className="rounded-lg border border-forest/15 bg-paper px-3 py-1.5 text-sm font-medium text-charcoal"
+          className="rounded-xl border border-rule bg-paper px-3 py-1.5 text-[0.875rem] font-medium text-charcoal shadow-xs"
         >
           {item}
         </li>
@@ -734,7 +734,7 @@ function ProjectHeroBanner({
       <button
         type="button"
         onClick={onClose}
-        className="absolute left-4 sm:left-6 top-4 sm:top-6 z-20 inline-flex items-center gap-2 rounded-full bg-ivory/95 px-4 py-2 text-sm font-semibold text-charcoal shadow-md backdrop-blur-md transition-all hover:bg-white hover:text-forest"
+        className="absolute left-4 sm:left-6 top-4 sm:top-6 z-20 inline-flex min-h-[44px] items-center gap-2 rounded-full bg-ivory/95 px-4 py-2 text-sm font-semibold text-charcoal shadow-md backdrop-blur-md transition-all hover:bg-white hover:text-forest focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-ink"
       >
         <svg viewBox="0 0 20 20" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M16 10H4m6-6-6 6 6 6" strokeLinecap="round" strokeLinejoin="round" />
@@ -746,7 +746,7 @@ function ProjectHeroBanner({
       <button
         type="button"
         onClick={onClose}
-        className="absolute right-4 sm:right-6 top-4 sm:top-6 z-20 grid h-9 w-9 place-items-center rounded-full bg-ivory/90 text-charcoal shadow-md backdrop-blur-md transition-all hover:bg-white hover:text-forest"
+        className="absolute right-4 sm:right-6 top-4 sm:top-6 z-20 grid h-11 w-11 place-items-center rounded-full bg-ivory/90 text-charcoal shadow-md backdrop-blur-md transition-all hover:bg-white hover:text-forest focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-ink"
         aria-label="Close dialog"
       >
         <svg viewBox="0 0 20 20" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
@@ -856,7 +856,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
     <article
       id={`project-${project.id}`}
       aria-labelledby={titleId}
-      className="flex flex-col overflow-hidden rounded-[1.5rem] border border-forest/12 bg-white shadow-[0_1px_0_rgb(0_0_0/0.02)]"
+      className="flex h-full flex-col overflow-hidden rounded-3xl border border-rule bg-white shadow-[0_18px_40px_-24px_rgb(14_58_47_/_0.35)]"
       {...revealProps((index % 2) * 100)}
     >
       {visible.length > 0 ? (
@@ -864,28 +864,28 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           images={visible}
           label={project.title}
           onFail={markFailed}
-          className="aspect-[16/10] w-full"
+          className="aspect-[4/3] w-full"
         />
       ) : (
-        <ImagePlaceholder className="aspect-[16/10] w-full" />
+        <ImagePlaceholder className="aspect-[4/3] w-full" />
       )}
 
       <div className="flex flex-1 flex-col p-6 sm:p-8">
         <div className="flex items-baseline justify-between gap-4">
-          <p className="text-sm font-semibold text-terracotta-ink">{project.category}</p>
+          <p className="eyebrow text-[0.75rem] tracking-[0.1em] text-terracotta-ink">{project.category}</p>
           <p className="font-mono text-sm text-ink-soft">{project.year}</p>
         </div>
 
-        <h3 id={titleId} className="mt-3 font-serif text-[1.8rem] leading-tight text-forest">
+        <h3 id={titleId} className="mt-3 font-serif text-[clamp(1.35rem,1.15rem+0.8vw,1.75rem)] leading-tight text-forest sm:text-3xl">
           {project.title}
         </h3>
         <p className="mt-2 font-serif text-[1.02rem] italic leading-snug text-ink-soft">{project.subtitle}</p>
 
-        <p className="mt-5 line-clamp-3 leading-relaxed text-ink-soft">{project.summary}</p>
+        <p className="mt-5 line-clamp-3 text-[1.0625rem] leading-[1.7] text-ink-soft">{project.summary}</p>
 
         <ul className="mt-5 flex flex-wrap gap-2" aria-label="Tags">
           {project.tags.map((tag) => (
-            <li key={tag} className="rounded-lg border border-forest/15 bg-ivory px-3 py-1.5 text-sm text-ink-soft">
+            <li key={tag} className="rounded-xl border border-rule bg-ivory px-3 py-1.5 text-[0.875rem] text-ink-soft">
               {tag}
             </li>
           ))}
@@ -893,11 +893,11 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
         {project.partners && project.partners.length > 0 && (
           <div className="mt-5 flex flex-wrap items-center gap-1.5" aria-label="Partners & Collaborators">
-            <span className="eyebrow text-[0.66rem] text-terracotta-ink mr-1">Partners:</span>
+            <span className="eyebrow text-[0.75rem] tracking-[0.1em] text-terracotta-ink mr-1">Partners:</span>
             {project.partners.map((partner) => (
               <span
                 key={partner.name}
-                className="inline-flex items-center gap-1.5 rounded-full border border-forest/15 bg-paper px-2.5 py-1 text-xs font-medium text-charcoal"
+                className="inline-flex items-center gap-1.5 rounded-full border border-rule bg-paper px-2.5 py-1 text-xs font-medium text-charcoal"
               >
                 <span className="h-1.5 w-1.5 rounded-full bg-forest" />
                 {partner.name}
@@ -909,7 +909,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         <div className="mt-auto pt-7">
           <button
             type="button"
-            className="inline-flex items-center gap-2 font-semibold text-terracotta-ink transition-colors hover:text-forest"
+            className="inline-flex min-h-[44px] items-center gap-2 font-semibold text-terracotta-ink transition-colors hover:text-forest focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-ink rounded-md"
             aria-haspopup="dialog"
             onClick={() => dialogRef.current?.showModal()}
           >
@@ -922,7 +922,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       <dialog
         ref={dialogRef}
         aria-labelledby={`${titleId}-dialog`}
-        className="m-auto max-h-[94dvh] w-[min(64rem,calc(100%-2rem))] overflow-y-auto rounded-[1.75rem] bg-ivory p-0 text-charcoal shadow-2xl backdrop:bg-forest-deep/65 backdrop:backdrop-blur-sm"
+        className="m-auto max-h-[94dvh] w-[min(52rem,calc(100%-2rem))] overflow-y-auto rounded-3xl border border-rule bg-ivory p-0 text-charcoal shadow-2xl backdrop:bg-forest-deep/65 backdrop:backdrop-blur-sm"
         onClick={(event) => {
           if (event.target === event.currentTarget) event.currentTarget.close()
         }}
@@ -934,10 +934,10 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           onClose={() => dialogRef.current?.close()}
         />
 
-        <div className="p-6 sm:p-10 lg:p-12">
+        <div className="p-8 sm:p-10">
           {/* Header Metadata Proyek (sesuai contoh referensi) */}
           <div>
-            <p className="eyebrow text-terracotta-ink text-sm font-semibold">
+            <p className="eyebrow text-terracotta-ink text-[0.75rem] tracking-[0.1em]">
               {project.category}
             </p>
             <h3
@@ -970,7 +970,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             {/* Partners & Collaborators (sesuai contoh gambar) */}
             {project.partners && project.partners.length > 0 && (
               <div className="mt-8 border-b border-rule pb-8">
-                <p className="eyebrow text-terracotta-ink text-xs font-bold tracking-widest">
+                <p className="eyebrow text-terracotta-ink text-[0.75rem] tracking-[0.1em]">
                   Partners & Collaborators
                 </p>
                 <div className="mt-5 flex flex-wrap items-start gap-6 sm:gap-10">
@@ -985,11 +985,11 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           <div className="mt-10 space-y-10">
             {/* --- PENJELASAN 1: Overview & Challenge --- */}
             <DetailSection heading="Project Overview">
-              <p className="text-lg leading-relaxed text-charcoal">{project.overview}</p>
+              <p className="text-[1.0625rem] leading-[1.7] max-w-[65ch] text-charcoal">{project.overview}</p>
             </DetailSection>
 
             <DetailSection heading="The Challenge">
-              <p className="leading-relaxed text-ink-soft">{project.challenge}</p>
+              <p className="text-[1.0625rem] leading-[1.7] max-w-[65ch] text-ink-soft">{project.challenge}</p>
             </DetailSection>
 
             {/* --- If activities exist: render each with its own collage; else: default 3-block layout --- */}
@@ -1011,7 +1011,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
                 {/* --- PENJELASAN 2: Approach & Methodology --- */}
                 <DetailSection heading="Approach & Methodology">
-                  <p className="leading-relaxed text-ink-soft">{project.approach}</p>
+                  <p className="text-[1.0625rem] leading-[1.7] max-w-[65ch] text-ink-soft">{project.approach}</p>
                 </DetailSection>
 
                 {/* --- GAMBAR BAGIAN 3: Kolase 4 Gambar --- */}
@@ -1028,14 +1028,14 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                 <DetailSection heading="Results & Key Findings">
                   <ul className="space-y-3">
                     {project.results.map((item) => (
-                      <li key={item} className="flex gap-3 text-base leading-relaxed text-charcoal">
+                      <li key={item} className="flex gap-3 text-[1.0625rem] leading-[1.7] max-w-[65ch] text-charcoal">
                         <span aria-hidden="true" className="mt-[0.6em] h-2 w-2 shrink-0 rounded-full bg-terracotta" />
                         <span>{item}</span>
                       </li>
                     ))}
                   </ul>
                   {project.note && (
-                    <div className="mt-5 rounded-xl border-l-4 border-terracotta bg-paper p-4 text-sm leading-relaxed text-ink-soft">
+                    <div className="mt-5 rounded-2xl border-l-4 border-terracotta bg-paper p-4 text-[0.95rem] leading-relaxed text-ink-soft">
                       <strong className="font-semibold text-charcoal">Data note: </strong>
                       {project.note}
                     </div>
@@ -1048,7 +1048,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             <div className="border-t border-rule pt-8 space-y-7">
               {project.fields.length > 0 && (
                 <div className="space-y-3">
-                  <p className="eyebrow text-terracotta-ink text-xs font-bold tracking-widest">
+                  <p className="eyebrow text-terracotta-ink text-[0.75rem] tracking-[0.1em]">
                     Fields & Expertise
                   </p>
                   <ChipList items={project.fields} />
@@ -1057,7 +1057,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
               {project.tools.length > 0 && (
                 <div className="space-y-3">
-                  <p className="eyebrow text-terracotta-ink text-xs font-bold tracking-widest">
+                  <p className="eyebrow text-terracotta-ink text-[0.75rem] tracking-[0.1em]">
                     Tools
                   </p>
                   <ToolChipList items={project.tools} />
@@ -1066,7 +1066,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
               {project.sdgs && project.sdgs.length > 0 && (
                 <div className="space-y-3">
-                  <p className="eyebrow text-terracotta-ink text-xs font-bold tracking-widest">
+                  <p className="eyebrow text-terracotta-ink text-[0.75rem] tracking-[0.1em]">
                     SDGs
                   </p>
                   <div className="flex flex-wrap gap-2.5">
@@ -1083,7 +1083,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               <button
                 type="button"
                 onClick={() => dialogRef.current?.close()}
-                className="inline-flex items-center gap-2 rounded-full bg-forest px-7 py-3 text-sm font-semibold text-ivory shadow-md transition-all hover:bg-forest-deep"
+                className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-forest px-7 py-3 text-sm font-semibold text-ivory shadow-md transition-all hover:bg-forest-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-ink"
               >
                 <svg viewBox="0 0 20 20" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M16 10H4m6-6-6 6 6 6" strokeLinecap="round" strokeLinejoin="round" />
@@ -1100,12 +1100,12 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
 export function Projects() {
   return (
-    <section id="projects" aria-labelledby="projects-title" className="bg-paper py-24 lg:py-32">
+    <section id="projects" aria-labelledby="projects-title" className="bg-paper py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <header className="mx-auto max-w-3xl text-center" {...revealProps()}>
           <h2
             id="projects-title"
-            className="font-serif text-[2.4rem] leading-[1.05] tracking-[-0.015em] text-forest sm:text-5xl lg:text-[3.6rem]"
+            className="font-serif text-[clamp(2rem,1.4rem+2.6vw,3.25rem)] leading-[1.08] tracking-[-0.015em] text-forest"
           >
             Projects
           </h2>
@@ -1113,7 +1113,7 @@ export function Projects() {
             Open any card to read the full case study.
           </p>
         </header>
-        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:gap-8">
+        <div className="mt-12 lg:mt-14 grid gap-6 md:grid-cols-2 lg:gap-8 items-stretch">
           {projects.map((project, i) => (
             <ProjectCard key={project.id} project={project} index={i} />
           ))}

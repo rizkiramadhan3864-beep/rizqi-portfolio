@@ -31,7 +31,16 @@ public/img/                 # the portrait goes here
 
 ## Conventions
 
-- Palette: forest #183D32, sage #B7C7B0, ivory #F6F4EC, charcoal #252B27, terracotta #C77B57. Use `text-terracotta-ink` (#9B5132) for terracotta *text* on light backgrounds, for contrast.
-- Serif (`font-serif`) is only for editorial headings. Mono (`font-mono`, `.eyebrow`) is for labels.
+- Palette: forest #0E3A2F, forest-deep #08201C, sage #A9D4BC, sage-soft #E3F3E8, ivory #F3F8F4, paper #FFFFFF, charcoal #12231D, ink-soft #526660, rule #D6E5DB. Note: terracotta (#2BA3B5) and terracotta-ink (#12707F) are now water-teal, names kept for compatibility.
+- Typography / Fonts:
+  - Serif (`font-serif`): 'Fraunces', 'Georgia', 'Times New Roman', serif — editorial headings.
+  - Sans (`font-sans`): 'Plus Jakarta Sans', 'Helvetica Neue', Arial, sans-serif — body copy and interface elements.
+  - Mono (`font-mono`, `.eyebrow`): 'IBM Plex Mono', 'Courier New', monospace — technical metadata, timestamps, and labels.
+- Type scale:
+  - H1: clamp(2.75rem, 1.6rem + 5vw, 5.5rem)
+  - H2: clamp(2rem, 1.4rem + 2.6vw, 3.25rem)
+  - H3: clamp(1.35rem, 1.15rem + 0.8vw, 1.75rem)
+  - Lead: clamp(1.25rem, 1.1rem + 0.8vw, 1.6rem)
+  - Body: 1.0625rem / 17px, line-height 1.7
 - Animate with `revealProps(delay)` only. It respects `prefers-reduced-motion`, and content stays visible without JS.
 - Section headers use `<SectionHeader index label title />` with sequential § numbers.

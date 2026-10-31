@@ -104,22 +104,22 @@ type SectionHeaderProps = {
 export function SectionHeader({ index, label, title, intro, tone = 'light' }: SectionHeaderProps) {
   const dark = tone === 'dark'
   return (
-    <header className="grid gap-6 md:grid-cols-12 md:gap-8" {...revealProps()}>
+    <header className="mx-auto max-w-3xl text-center mb-12 lg:mb-14" {...revealProps()}>
       <p
-        className={`eyebrow md:col-span-3 md:pt-3 ${dark ? 'text-sage' : 'text-terracotta-ink'}`}
+        className={`eyebrow ${dark ? 'text-sage' : 'text-terracotta-ink'}`}
       >
         <span aria-hidden="true">§ {index} — </span>
         {label}
       </p>
-      <div className="md:col-span-9">
+      <div className="mt-3">
         <h2
-          className={`font-serif text-[2.4rem] leading-[1.05] tracking-[-0.015em] text-balance sm:text-5xl lg:text-[3.6rem] ${dark ? 'text-ivory' : 'text-forest'}`}
+          className={`font-serif text-[clamp(2rem,1.4rem+2.6vw,3.25rem)] leading-[1.08] tracking-[-0.015em] text-balance ${dark ? 'text-ivory' : 'text-forest'}`}
         >
           {title}
         </h2>
         {intro && (
           <p
-            className={`mt-5 max-w-2xl text-lg leading-relaxed ${dark ? 'text-sage-soft/85' : 'text-ink-soft'}`}
+            className={`mt-4 max-w-2xl mx-auto text-lg leading-relaxed ${dark ? 'text-sage-soft/85' : 'text-ink-soft'}`}
           >
             {intro}
           </p>

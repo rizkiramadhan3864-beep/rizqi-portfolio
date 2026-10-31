@@ -7,13 +7,13 @@ import type { ProjectId } from '../content/profile'
  */
 
 const C = {
-  forest: '#183D32',
-  sage: '#B7C7B0',
-  sageSoft: '#DFE6D8',
-  ivory: '#F6F4EC',
-  paper: '#FBFAF5',
-  terracotta: '#C77B57',
-  ink: '#4F5751',
+  forest: '#0E3A2F',
+  sage: '#A9D4BC',
+  sageSoft: '#E3F3E8',
+  ivory: '#F3F8F4',
+  paper: '#FFFFFF',
+  terracotta: '#2BA3B5',
+  ink: '#526660',
 }
 
 /** Hero backdrop: field-map contours crossed by irrigation laterals with sensor nodes. */
@@ -229,7 +229,7 @@ function GreenhouseDiagram() {
   )
 }
 
-const diagrams: Record<ProjectId, () => ReactElement> = {
+const diagrams: Record<string, () => ReactElement> = {
   irrigation: IrrigationDiagram,
   fertigation: FertigationDiagram,
   'plant-factory': PlantFactoryDiagram,
@@ -238,6 +238,7 @@ const diagrams: Record<ProjectId, () => ReactElement> = {
 
 export function ProjectDiagram({ id, title }: { id: ProjectId; title: string }) {
   const Diagram = diagrams[id]
+  if (!Diagram) return null
   return (
     <div role="img" aria-label={`Schematic diagram: ${title}`} className="h-full w-full">
       <Diagram />
