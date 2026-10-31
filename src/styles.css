@@ -1,0 +1,202 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-forest: #183d32;
+  --color-forest-deep: #102a22;
+  --color-sage: #b7c7b0;
+  --color-sage-soft: #dfe6d8;
+  --color-ivory: #f6f4ec;
+  --color-paper: #fbfaf5;
+  --color-charcoal: #252b27;
+  --color-ink-soft: #4f5751;
+  --color-terracotta: #c77b57;
+  /* Darker terracotta for text on light backgrounds (meets WCAG AA). */
+  --color-terracotta-ink: #9b5132;
+  --color-rule: #d9d6c8;
+
+  --font-sans: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Newsreader', ui-serif, Georgia, serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --ease-field: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-ivory text-charcoal font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--color-sage);
+    color: var(--color-forest-deep);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-terracotta-ink);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  .on-dark :focus-visible,
+  .on-dark:focus-visible {
+    outline-color: var(--color-sage);
+  }
+}
+
+@layer components {
+  /* Faint graph-paper grid, like a surveyor's field notebook. */
+  .graph-paper {
+    background-image:
+      linear-gradient(to right, rgb(24 61 50 / 0.055) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(24 61 50 / 0.055) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  .eyebrow {
+    @apply font-mono text-[0.72rem] font-medium tracking-[0.14em] uppercase;
+  }
+
+  /* Ruler-tick divider used between sections. */
+  .ruler {
+    height: 12px;
+    background-image:
+      linear-gradient(to right, var(--color-rule) 1px, transparent 1px),
+      linear-gradient(to right, var(--color-ink-soft) 1px, transparent 1px);
+    background-size:
+      12px 6px,
+      120px 12px;
+    background-repeat: repeat-x;
+    background-position: left bottom;
+    opacity: 0.55;
+  }
+
+  .btn-primary,
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-[0.95rem] font-semibold transition-all duration-300;
+    transition-timing-function: var(--ease-field);
+  }
+  .btn-primary {
+    @apply bg-forest text-ivory hover:bg-forest-deep;
+  }
+  .btn-primary:hover .btn-arrow {
+    transform: translateX(3px);
+  }
+  .btn-ghost {
+    @apply border border-forest/30 text-forest hover:border-forest hover:bg-forest/5;
+  }
+  .btn-arrow {
+    transition: transform 300ms var(--ease-field);
+  }
+
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 350ms var(--ease-field);
+  }
+  .link-underline:hover,
+  .link-underline[aria-current='true'] {
+    background-size: 100% 1px;
+  }
+
+  /* Corner crop marks around plates and figures. */
+  .crop-marks {
+    position: relative;
+  }
+  .crop-marks::before,
+  .crop-marks::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    pointer-events: none;
+    border-color: var(--color-forest);
+    opacity: 0.6;
+  }
+  .crop-marks::before {
+    top: -7px;
+    left: -7px;
+    border-top: 1px solid;
+    border-left: 1px solid;
+  }
+  .crop-marks::after {
+    bottom: -7px;
+    right: -7px;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+  }
+}
+
+/* Scroll-reveal: only hides content when JS is running (class set in index.html). */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 800ms var(--ease-field),
+    transform 800ms var(--ease-field);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.js [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Slow growth of contour lines in the hero field map. */
+.contour-draw path {
+  stroke-dasharray: 1400;
+  stroke-dashoffset: 1400;
+  animation: draw 3.2s var(--ease-field) forwards;
+  animation-delay: var(--d, 0s);
+}
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.flow-dash {
+  stroke-dasharray: 4 6;
+  animation: flow 1.6s linear infinite;
+}
+@keyframes flow {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+dialog::backdrop {
+  background: rgb(16 42 34 / 0.55);
+}
+dialog[open] {
+  animation: dialog-in 350ms var(--ease-field);
+}
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  .contour-draw path {
+    stroke-dashoffset: 0;
+  }
+}

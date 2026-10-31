@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Netlify
+.netlify/
+!.netlify/features
+.netlify-cache/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment variables (sensitive — never upload)
+.env
+.env.local
+.env.*.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/settings.json
