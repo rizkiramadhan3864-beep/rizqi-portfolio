@@ -79,16 +79,14 @@ export function SiteHeader() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${
-        open
-          ? 'border-forest-deep bg-forest text-ivory'
-          : scrolled
-            ? 'border-rule bg-ivory/95 text-forest shadow-[0_4px_24px_rgb(14_58_47/0.06)] backdrop-blur-md'
-            : 'border-transparent bg-transparent text-ivory'
+        scrolled || open
+          ? 'border-rule bg-ivory/95 shadow-[0_4px_24px_rgb(14_58_47/0.06)] backdrop-blur-md'
+          : 'border-transparent bg-ivory/80 backdrop-blur-sm'
       }`}
     >
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-[60] focus:rounded-full focus:bg-forest focus:px-4 focus:py-2 focus:text-ivory focus-visible:ring-2 focus-visible:ring-terracotta-ink focus-visible:ring-offset-3"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-[60] focus:rounded-full focus:bg-forest focus:px-4 focus:py-2 focus:text-ivory"
       >
         Skip to content
       </a>
@@ -101,16 +99,12 @@ export function SiteHeader() {
         <a
           href="#home"
           onClick={closeMenu}
-          className="group flex shrink-0 items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-ink focus-visible:ring-offset-3 rounded-full"
+          className="group flex shrink-0 items-center gap-3"
           aria-label={`${profile.shortName} - Home`}
         >
           <span
             aria-hidden="true"
-            className={`grid h-9 w-9 place-items-center rounded-full transition-transform duration-300 group-hover:rotate-[-8deg] ${
-              scrolled && !open
-                ? 'bg-forest text-ivory ring-1 ring-forest/20'
-                : 'bg-forest-deep/80 text-ivory ring-1 ring-sage/50'
-            }`}
+            className="grid h-9 w-9 place-items-center rounded-full bg-forest text-ivory transition-transform duration-300 group-hover:rotate-[-8deg]"
           >
             <svg viewBox="0 0 24 24" className="h-[1.125rem] w-[1.125rem]" fill="none">
               <path d="M12 20V9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
@@ -119,11 +113,7 @@ export function SiteHeader() {
             </svg>
           </span>
 
-          <span
-            className={`text-base font-semibold tracking-tight transition-colors duration-200 sm:text-[1.05rem] ${
-              scrolled && !open ? 'text-forest' : 'text-ivory'
-            }`}
-          >
+          <span className="text-base font-semibold tracking-tight text-forest sm:text-[1.05rem]">
             {profile.shortName}
           </span>
         </a>
@@ -138,21 +128,15 @@ export function SiteHeader() {
                 <a
                   href={`#${item.id}`}
                   aria-current={isActive ? 'location' : undefined}
-                  className={`relative inline-flex min-h-[44px] items-center py-2 text-sm font-medium transition-colors duration-200 xl:text-[0.92rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-ink focus-visible:ring-offset-3 rounded-md ${
-                    scrolled
-                      ? isActive
-                        ? 'text-forest'
-                        : 'text-ink-soft hover:text-forest'
-                      : isActive
-                        ? 'text-ivory'
-                        : 'text-ivory/80 hover:text-ivory'
+                  className={`relative py-2 text-sm font-medium transition-colors duration-200 xl:text-[0.92rem] ${
+                    isActive ? 'text-forest' : 'text-ink-soft hover:text-forest'
                   }`}
                 >
                   {item.label}
 
                   <span
                     aria-hidden="true"
-                    className={`absolute inset-x-0 bottom-1.5 h-[2px] origin-left rounded-full bg-terracotta transition-transform duration-300 ${
+                    className={`absolute inset-x-0 -bottom-0.5 h-[2px] origin-left rounded-full bg-terracotta-ink transition-transform duration-300 ${
                       isActive ? 'scale-x-100' : 'scale-x-0'
                     }`}
                   />
@@ -167,11 +151,7 @@ export function SiteHeader() {
           <a
             href={profile.cvPath}
             download
-            className={`hidden min-h-[44px] items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-ink focus-visible:ring-offset-3 sm:inline-flex ${
-              scrolled && !open
-                ? 'bg-forest text-ivory hover:bg-forest-deep shadow-sm'
-                : 'bg-ivory text-forest hover:bg-sage-soft shadow-md'
-            }`}
+            className="btn-primary hidden items-center gap-2 px-4 py-2.5 text-sm sm:inline-flex"
           >
             <DownloadIcon />
             <span>Download CV</span>
@@ -180,11 +160,7 @@ export function SiteHeader() {
           <button
             ref={toggleRef}
             type="button"
-            className={`grid h-11 w-11 place-items-center rounded-full border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-ink focus-visible:ring-offset-3 lg:hidden ${
-              scrolled && !open
-                ? 'border-forest/20 text-forest hover:bg-forest/5'
-                : 'border-ivory/30 text-ivory hover:bg-ivory/10'
-            }`}
+            className="grid h-10 w-10 place-items-center rounded-full border border-forest/20 text-forest transition-colors hover:bg-forest/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-ink lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
@@ -211,11 +187,11 @@ export function SiteHeader() {
         id="mobile-menu"
         ref={menuRef}
         hidden={!open}
-        className="graph-paper h-[calc(100dvh-4.5rem)] overflow-y-auto border-t border-forest-deep bg-forest text-ivory px-5 pb-10 pt-6 sm:px-8 lg:hidden"
+        className="graph-paper h-[calc(100dvh-4.5rem)] overflow-y-auto border-t border-rule bg-ivory px-5 pb-10 pt-6 sm:px-8 lg:hidden"
       >
-        <p className="eyebrow text-sage">Explore</p>
+        <p className="eyebrow text-terracotta-ink">Explore</p>
 
-        <ul className="mt-4 divide-y divide-forest-deep/60 border-y border-forest-deep/60">
+        <ul className="mt-4 divide-y divide-rule border-y border-rule">
           {navItems.map((item, index) => {
             const isActive = active === item.id
 
@@ -225,12 +201,12 @@ export function SiteHeader() {
                   href={`#${item.id}`}
                   onClick={closeMenu}
                   aria-current={isActive ? 'location' : undefined}
-                  className={`flex min-h-[44px] items-baseline justify-between py-4 font-serif text-3xl transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-ink focus-visible:ring-offset-3 ${
-                    isActive ? 'text-terracotta' : 'text-ivory hover:text-sage'
+                  className={`flex items-baseline justify-between py-4 font-serif text-3xl transition-colors ${
+                    isActive ? 'text-terracotta-ink' : 'text-forest'
                   }`}
                 >
                   <span>{item.label}</span>
-                  <span className="font-mono text-xs text-sage/70">
+                  <span className="font-mono text-xs text-ink-soft">
                     {String(index + 1).padStart(2, '0')}
                   </span>
                 </a>
@@ -239,12 +215,7 @@ export function SiteHeader() {
           })}
         </ul>
 
-        <a
-          href={profile.cvPath}
-          download
-          className="btn-primary mt-8 flex min-h-[44px] w-full items-center justify-center gap-2 bg-ivory text-forest hover:bg-sage-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-ink focus-visible:ring-offset-3"
-          onClick={closeMenu}
-        >
+        <a href={profile.cvPath} download className="btn-primary mt-8 w-full" onClick={closeMenu}>
           <DownloadIcon />
           Download CV
         </a>

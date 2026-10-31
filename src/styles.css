@@ -1,28 +1,22 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-forest: #0E3A2F;
-  --color-forest-deep: #08201C;
-  --color-sage: #A9D4BC;
-  --color-sage-soft: #E3F3E8;
-  --color-ivory: #F3F8F4;
-  --color-paper: #FFFFFF;
-  --color-charcoal: #12231D;
-  --color-ink-soft: #526660;
-  --color-terracotta: #2BA3B5; /* now water-teal, name kept for compatibility */
-  --color-terracotta-ink: #12707F; /* now water-teal, name kept for compatibility */
-  --color-rule: #D6E5DB;
+  --color-forest: #183d32;
+  --color-forest-deep: #102a22;
+  --color-sage: #b7c7b0;
+  --color-sage-soft: #dfe6d8;
+  --color-ivory: #f6f4ec;
+  --color-paper: #fbfaf5;
+  --color-charcoal: #252b27;
+  --color-ink-soft: #4f5751;
+  --color-terracotta: #c77b57;
+  /* Darker terracotta for text on light backgrounds (meets WCAG AA). */
+  --color-terracotta-ink: #9b5132;
+  --color-rule: #d9d6c8;
 
-  --font-serif: 'Fraunces', 'Georgia', 'Times New Roman', serif;
-  --font-sans: 'Plus Jakarta Sans', 'Helvetica Neue', Arial, sans-serif;
-  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
-
-  --text-h1: clamp(2.75rem, 1.6rem + 5vw, 5.5rem);
-  --text-h2: clamp(2rem, 1.4rem + 2.6vw, 3.25rem);
-  --text-h3: clamp(1.35rem, 1.15rem + 0.8vw, 1.75rem);
-  --text-lead: clamp(1.25rem, 1.1rem + 0.8vw, 1.6rem);
-
-  --shadow-card: 0 18px 40px -24px rgb(14 58 47 / 0.35);
+  --font-sans: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Newsreader', ui-serif, Georgia, serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --ease-field: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
@@ -35,9 +29,6 @@
   }
   body {
     @apply bg-ivory text-charcoal font-sans antialiased;
-    font-size: 1.0625rem;
-    line-height: 1.7;
-    color: var(--color-charcoal);
     text-rendering: optimizeLegibility;
   }
   ::selection {
@@ -59,13 +50,13 @@
   /* Faint graph-paper grid, like a surveyor's field notebook. */
   .graph-paper {
     background-image:
-      linear-gradient(to right, rgb(14 58 47 / 0.055) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(14 58 47 / 0.055) 1px, transparent 1px);
+      linear-gradient(to right, rgb(24 61 50 / 0.055) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(24 61 50 / 0.055) 1px, transparent 1px);
     background-size: 28px 28px;
   }
 
   .eyebrow {
-    @apply font-mono text-[0.75rem] font-medium tracking-[0.1em] uppercase;
+    @apply font-mono text-[0.72rem] font-medium tracking-[0.14em] uppercase;
   }
 
   /* Ruler-tick divider used between sections. */
@@ -178,36 +169,7 @@
 }
 
 dialog::backdrop {
-  background: rgb(8 32 28 / 0.55);
-}
-dialog[open] {
-  animation: dialog-in 350ms var(--ease-field);
-}
-@keyframes dialog-in {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-  .js [data-reveal] {
-    opacity: 1;
-    transform: none;
-  }
-  .contour-draw path {
-    stroke-dashoffset: 0;
-  }
+  background: rgb(16 42 34 / 0.55);
 }
 dialog[open] {
   animation: dialog-in 350ms var(--ease-field);
