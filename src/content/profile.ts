@@ -82,7 +82,7 @@ export type Experience = {
 
 export const experiences: Experience[] = [
   {
-    role: 'Assistant Manager',
+    role: 'Plant Factory Operations Coordinator',
     organization: 'Plant Factory, Faculty of Agricultural Technology, Universitas Gadjah Mada',
     period: 'July 2026 – Present',
     current: true,
