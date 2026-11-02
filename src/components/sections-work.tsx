@@ -891,21 +891,6 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           ))}
         </ul>
 
-        {project.partners && project.partners.length > 0 && (
-          <div className="mt-5 flex flex-wrap items-center gap-1.5" aria-label="Partners & Collaborators">
-            <span className="eyebrow text-[0.66rem] text-terracotta-ink mr-1">Partners:</span>
-            {project.partners.map((partner) => (
-              <span
-                key={partner.name}
-                className="inline-flex items-center gap-1.5 rounded-full border border-forest/15 bg-paper px-2.5 py-1 text-xs font-medium text-charcoal"
-              >
-                <span className="h-1.5 w-1.5 rounded-full bg-forest" />
-                {partner.name}
-              </span>
-            ))}
-          </div>
-        )}
-
         <div className="mt-auto pt-7">
           <button
             type="button"
