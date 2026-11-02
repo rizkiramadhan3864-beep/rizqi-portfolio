@@ -111,7 +111,7 @@ export const experiences: Experience[] = [
   {
     role: 'Research Assistant',
     organization: 'Smart Agriculture UGM',
-    period: 'October 2026 – Present',
+    period: 'August 2026 – Present',
     current: true,
     points: [
       'Monitor field implementation of the AURORA fertigation project at KWT Teratai Mekar.',
@@ -186,14 +186,14 @@ export const experiences: Experience[] = [
     ],
   },
   {
-    role: 'Intern — Plantation',
+    role: 'Plantation Smart Greenhouse',
     organization: 'PT Mitra Sejahtera Membangun Bangsa (MSMB)',
     period: 'December 2024 – February 2025',
     current: false,
     points: [
-      'Monitored greenhouse environmental and cultivation parameters.',
+      'Monitored smart greenhouse environmental and cultivation parameters.',
       'Observed temperature, relative humidity, pH, and electrical conductivity (EC).',
-      'Supported cultivation monitoring in a 400 m² greenhouse with approximately 1,200 premium melon plants.',
+      'Supported cultivation monitoring in a 400 m² smart greenhouse with approximately 1,200 premium melon plants.',
     ],
     skills: [
       'Crop Management',
