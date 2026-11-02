@@ -200,7 +200,7 @@ export const experiences: Experience[] = [
       'Environmental Parameter Analysis',
       'Nutrient Solution Monitoring',
       'Crop Data Recording & Analysis',
-      'Cultivation',
+      'Crop Cultivation & Maintenance',
       'Crop Growth Assessment',
       'Technical Observation',
     ],
