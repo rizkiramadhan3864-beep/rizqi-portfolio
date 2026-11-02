@@ -952,19 +952,6 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               <span className="font-mono text-xs font-semibold text-forest">{project.year}</span>
             </div>
 
-            {/* Partners & Collaborators (sesuai contoh gambar) */}
-            {project.partners && project.partners.length > 0 && (
-              <div className="mt-8 border-b border-rule pb-8">
-                <p className="eyebrow text-terracotta-ink text-xs font-bold tracking-widest">
-                  Partners & Collaborators
-                </p>
-                <div className="mt-5 flex flex-wrap items-start gap-6 sm:gap-10">
-                  {project.partners.map((partner) => (
-                    <PartnerLogoBadge key={partner.name} partner={partner} />
-                  ))}
-                </div>
-              </div>
-            )}
           </div>
 
           <div className="mt-10 space-y-10">
