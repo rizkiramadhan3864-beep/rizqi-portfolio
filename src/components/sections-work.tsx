@@ -12,7 +12,7 @@ function ExperienceCollage({ photos, label }: { photos: string[]; label: string 
 
   return (
     <div
-      className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl bg-sage-soft"
+      className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-sage-soft"
       role="group"
       aria-label={`Documentation: ${label}`}
     >
@@ -34,7 +34,7 @@ function ExperienceCollage({ photos, label }: { photos: string[]; label: string 
       {frames.map((position, i) => (
         <div
           key={position}
-          className={`absolute bg-white p-[3%] shadow-[0_10px_24px_-10px_rgb(0_0_0/0.35)] ${position}`}
+          className={`absolute rounded-xs bg-white p-[3%] shadow-[0_10px_24px_-10px_rgb(0_0_0/0.35)] ${position}`}
         >
           <div className="aspect-square overflow-hidden bg-ivory">
             {photos[i] && (
@@ -42,7 +42,7 @@ function ExperienceCollage({ photos, label }: { photos: string[]; label: string 
                 src={photos[i]}
                 alt={`${label} documentation ${i + 1}`}
                 loading="lazy"
-                className="h-full w-full object-cover"
+                className="photo-treatment h-full w-full object-cover"
                 onError={(event) => {
                   handleImageFallback(event, () => {
                     event.currentTarget.style.visibility = 'hidden'
@@ -59,22 +59,22 @@ function ExperienceCollage({ photos, label }: { photos: string[]; label: string 
 
 export function Experience() {
   return (
-    <section id="experience" aria-labelledby="experience-title" className="py-24 lg:py-32">
+    <section id="experience" aria-labelledby="experience-title" className="py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <header className="mx-auto max-w-3xl text-center" {...revealProps()}>
           <h2
             id="experience-title"
-            className="font-serif text-[2.4rem] leading-[1.05] tracking-[-0.015em] text-forest sm:text-5xl lg:text-[3.6rem]"
+            className="font-serif text-[clamp(2rem,1.5rem+2.2vw,3.25rem)] leading-[1.08] tracking-[-0.015em] text-forest"
           >
             Experience
           </h2>
         </header>
 
-        <ol className="mt-14">
+        <ol className="mt-12 lg:mt-14">
           {experiences.map((exp, i) => (
             <li
               key={exp.role + exp.period}
-              className="border-t border-rule py-14 first:border-t-0 first:pt-0 last:pb-0"
+              className="border-t border-rule py-12 first:border-t-0 first:pt-0 last:pb-0"
               {...revealProps(i * 40)}
             >
               <article className="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
@@ -84,21 +84,21 @@ export function Experience() {
 
                 <div className="lg:col-span-7">
                   <div className="flex flex-wrap items-center gap-3">
-                    <p className="font-mono text-[0.78rem] text-ink-soft">{exp.period}</p>
+                    <p className="font-mono text-[0.8125rem] text-ink-soft">{exp.period}</p>
                     {exp.current && (
-                      <p className="inline-flex items-center gap-1.5 rounded-full bg-sage-soft px-2.5 py-1 font-mono text-[0.66rem] uppercase tracking-[0.12em] text-forest">
+                      <p className="inline-flex items-center gap-1.5 rounded-full bg-sage-soft px-2.5 py-1 font-mono text-[0.75rem] uppercase tracking-[0.08em] text-forest">
                         <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-forest" />
                         Current role
                       </p>
                     )}
                   </div>
 
-                  <h3 className="mt-3 font-serif text-[1.9rem] leading-tight text-forest">{exp.role}</h3>
+                  <h3 className="mt-3 font-serif text-[clamp(1.4rem,1.2rem+0.8vw,1.85rem)] leading-tight text-forest">{exp.role}</h3>
                   <p className="mt-1.5 font-medium text-charcoal">{exp.organization}</p>
 
-                  <ul className="mt-5 space-y-2.5">
+                  <ul className="mt-5 space-y-2.5 max-w-[65ch]">
                     {exp.points.map((point) => (
-                      <li key={point} className="flex gap-3 leading-relaxed text-ink-soft">
+                      <li key={point} className="flex gap-3 leading-relaxed text-ink-soft text-base">
                         <span aria-hidden="true" className="mt-[0.7em] h-px w-3 shrink-0 bg-terracotta" />
                         {point}
                       </li>
@@ -106,12 +106,12 @@ export function Experience() {
                   </ul>
 
                   <div className="mt-7">
-                    <p className="eyebrow text-[0.68rem] text-ink-soft">Skills gained</p>
+                    <p className="eyebrow text-terracotta-ink">Skills gained</p>
                     <ul className="mt-3 grid grid-cols-2 gap-2.5 sm:grid-cols-3">
                       {(exp.skills ?? []).map((skill) => (
                         <li
                           key={skill}
-                          className="rounded-xl border border-forest/15 bg-paper px-3.5 py-3 text-sm font-semibold leading-snug text-forest"
+                          className="rounded-xl border border-forest/15 bg-paper px-3.5 py-2.5 text-xs sm:text-sm font-semibold leading-snug text-forest shadow-xs"
                         >
                           {skill}
                         </li>
@@ -185,8 +185,8 @@ function PartnerEmblem({ name }: { name: string }) {
 
   // Enterprise / Company / MSMB emblem
   return (
-    <svg viewBox="0 0 48 48" className="h-10 w-10 sm:h-12 sm:w-12 text-[#9B5132]" fill="none" stroke="currentColor" strokeWidth="1.5">
-      <rect x="8" y="8" width="32" height="32" rx="9" fill="#9B5132" fillOpacity="0.12" strokeWidth="1.5" />
+    <svg viewBox="0 0 48 48" className="h-10 w-10 sm:h-12 sm:w-12 text-terracotta-ink" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <rect x="8" y="8" width="32" height="32" rx="9" fill="currentColor" fillOpacity="0.12" strokeWidth="1.5" />
       <path d="M 15 32 L 24 16 L 33 32" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
       <circle cx="24" cy="20" r="2.5" fill="currentColor" />
       <path d="M 19 26 H 29" strokeWidth="1.8" />
@@ -264,7 +264,7 @@ function ImageGrid({
             src={img.src}
             alt={`${label}: ${img.caption}`}
             loading="lazy"
-            className="absolute inset-0 h-full w-full object-cover"
+            className="photo-treatment absolute inset-0 h-full w-full object-cover"
             onError={(e) => {
               handleImageFallback(e, () => onFail(img.src))
             }}
@@ -661,13 +661,13 @@ function ActivityBlock({ activity, index }: { activity: ProjectActivity; index: 
       {isSingleImage ? (
         /* Single full-width image */
         <div className="space-y-3">
-          <p className="eyebrow text-[0.7rem] text-ink-soft/70">{activity.title} — Photo documentation</p>
+          <p className="eyebrow text-terracotta-ink">{activity.title} — Photo documentation</p>
           <div className="overflow-hidden rounded-xl aspect-[16/9] bg-sage-soft/30">
             <img
               src={activity.images[0].src}
               alt={activity.images[0].caption}
               loading="lazy"
-              className="h-full w-full object-cover"
+              className="photo-treatment h-full w-full object-cover"
               onError={(e) => handleImageFallback(e, () => { e.currentTarget.style.display = 'none' })}
             />
           </div>
@@ -796,7 +796,7 @@ function ProjectCollageGrid({
                     src={img.src}
                     alt={img.caption || `Documentation ${offset + 1}`}
                     loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="photo-treatment h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     onError={(e) => {
                       handleImageFallback(e, () => {
                         e.currentTarget.style.display = 'none'
@@ -856,7 +856,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
     <article
       id={`project-${project.id}`}
       aria-labelledby={titleId}
-      className="flex flex-col overflow-hidden rounded-[1.5rem] border border-forest/12 bg-white shadow-[0_1px_0_rgb(0_0_0/0.02)]"
+      className="flex flex-col overflow-hidden rounded-2xl border border-forest/15 bg-paper shadow-sm transition-all duration-300 hover:border-forest/30 hover:shadow-md"
       {...revealProps((index % 2) * 100)}
     >
       {visible.length > 0 ? (
@@ -872,11 +872,11 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
       <div className="flex flex-1 flex-col p-6 sm:p-8">
         <div className="flex items-baseline justify-between gap-4">
-          <p className="text-sm font-semibold text-terracotta-ink">{project.category}</p>
+          <p className="eyebrow text-terracotta-ink">{project.category}</p>
           <p className="font-mono text-sm text-ink-soft">{project.year}</p>
         </div>
 
-        <h3 id={titleId} className="mt-3 font-serif text-[1.8rem] leading-tight text-forest">
+        <h3 id={titleId} className="mt-3 font-serif text-[clamp(1.4rem,1.2rem+0.6vw,1.8rem)] leading-snug text-forest">
           {project.title}
         </h3>
         <p className="mt-2 font-serif text-[1.02rem] italic leading-snug text-ink-soft">{project.subtitle}</p>
@@ -885,7 +885,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
         <ul className="mt-5 flex flex-wrap gap-2" aria-label="Tags">
           {project.tags.map((tag) => (
-            <li key={tag} className="rounded-lg border border-forest/15 bg-ivory px-3 py-1.5 text-sm text-ink-soft">
+            <li key={tag} className="rounded-full border border-forest/15 bg-ivory px-3 py-1 text-xs sm:text-sm font-medium text-ink-soft">
               {tag}
             </li>
           ))}
@@ -907,7 +907,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       <dialog
         ref={dialogRef}
         aria-labelledby={`${titleId}-dialog`}
-        className="m-auto max-h-[94dvh] w-[min(64rem,calc(100%-2rem))] overflow-y-auto rounded-[1.75rem] bg-ivory p-0 text-charcoal shadow-2xl backdrop:bg-forest-deep/65 backdrop:backdrop-blur-sm"
+        className="m-auto max-h-[94dvh] w-[min(54rem,calc(100%-2rem))] overflow-y-auto rounded-2xl bg-paper p-0 text-charcoal shadow-2xl backdrop:bg-forest-deep/65 backdrop:backdrop-blur-sm"
         onClick={(event) => {
           if (event.target === event.currentTarget) event.currentTarget.close()
         }}
@@ -1072,20 +1072,20 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
 export function Projects() {
   return (
-    <section id="projects" aria-labelledby="projects-title" className="bg-paper py-24 lg:py-32">
+    <section id="projects" aria-labelledby="projects-title" className="bg-paper py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <header className="mx-auto max-w-3xl text-center" {...revealProps()}>
           <h2
             id="projects-title"
-            className="font-serif text-[2.4rem] leading-[1.05] tracking-[-0.015em] text-forest sm:text-5xl lg:text-[3.6rem]"
+            className="font-serif text-[clamp(2rem,1.5rem+2.2vw,3.25rem)] leading-[1.08] tracking-[-0.015em] text-forest"
           >
             Projects
           </h2>
-          <p className="mt-4 text-lg leading-relaxed text-ink-soft">
+          <p className="mt-4 text-base sm:text-lg leading-relaxed text-ink-soft">
             Open any card to read the full case study.
           </p>
         </header>
-        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:gap-8">
+        <div className="mt-12 lg:mt-14 grid gap-6 md:grid-cols-2 lg:gap-8">
           {projects.map((project, i) => (
             <ProjectCard key={project.id} project={project} index={i} />
           ))}

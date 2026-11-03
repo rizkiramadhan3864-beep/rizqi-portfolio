@@ -31,7 +31,8 @@ public/img/                 # the portrait goes here
 
 ## Conventions
 
-- Palette: forest #183D32, sage #B7C7B0, ivory #F6F4EC, charcoal #252B27, terracotta #C77B57. Use `text-terracotta-ink` (#9B5132) for terracotta *text* on light backgrounds, for contrast.
-- Serif (`font-serif`) is only for editorial headings. Mono (`font-mono`, `.eyebrow`) is for labels.
+- Palette: forest #183D32, forest-deep #0F2920, sage #B9C9A8, sage-soft #DDE5D3, ivory #F4EFE4 (page background), paper #FBF8F1 (card surface), charcoal #1F2A24, ink-soft #3A463F, terracotta #B5694A (decorative only), terracotta-ink #9A4F32 (small text/labels on light for WCAG AA), rule #D4CFBF.
+- Typography: Fraunces (`font-serif`, display headings), Inter (`font-sans`, body & UI), IBM Plex Mono (`font-mono`, metadata & labels).
+- Fluid type scale: H1 `clamp(2.75rem, 2rem + 3.5vw, 5rem)`, H2 `clamp(2rem, 1.5rem + 2.2vw, 3.25rem)`, H3 `clamp(1.35rem, 1.15rem + 0.8vw, 1.75rem)`.
+- Photos: `.photo-treatment` (grayscale with enhanced contrast, full color on hover).
 - Animate with `revealProps(delay)` only. It respects `prefers-reduced-motion`, and content stays visible without JS.
-- Section headers use `<SectionHeader index label title />` with sequential § numbers.
