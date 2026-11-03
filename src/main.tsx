@@ -19,14 +19,14 @@ class ErrorBoundary extends Component<{ children: ReactNode }, { error: Error | 
       return (
         <div style={{ padding: '2rem', fontFamily: 'sans-serif', maxWidth: '600px', margin: '4rem auto', textAlign: 'center' }}>
           <h2 style={{ color: '#183D32' }}>Terjadi kesalahan saat memuat tampilan</h2>
-          <p style={{ color: '#3A463F', margin: '1rem 0' }}>{(this.state.error as Error).message}</p>
+          <p style={{ color: '#4F5751', margin: '1rem 0' }}>{(this.state.error as Error).message}</p>
           <button
             type="button"
             onClick={() => window.location.reload()}
             style={{
               padding: '0.6rem 1.4rem',
               background: '#183D32',
-              color: '#F4EFE4',
+              color: '#F6F4EC',
               border: 'none',
               borderRadius: '9999px',
               cursor: 'pointer',

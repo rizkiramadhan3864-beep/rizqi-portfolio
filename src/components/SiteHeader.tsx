@@ -108,8 +108,8 @@ export function SiteHeader() {
           >
             <svg viewBox="0 0 24 24" className="h-[1.125rem] w-[1.125rem]" fill="none">
               <path d="M12 20V9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-              <path d="M12 13c-3.6 0-5.5-2.3-5.5-5.5 3.6 0 5.5 2.3 5.5 5.5Z" fill="#B9C9A8" />
-              <path d="M12 10.5c0-3.2 2-5 5.5-5 0 3.2-2 5-5.5 5Z" fill="#B5694A" />
+              <path d="M12 13c-3.6 0-5.5-2.3-5.5-5.5 3.6 0 5.5 2.3 5.5 5.5Z" fill="#A9D4BC" />
+              <path d="M12 10.5c0-3.2 2-5 5.5-5 0 3.2-2 5-5.5 5Z" fill="#2BA3B5" />
             </svg>
           </span>
 

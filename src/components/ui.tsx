@@ -113,7 +113,7 @@ export function SectionHeader({ index, label, title, intro, tone = 'light' }: Se
       </p>
       <div className="md:col-span-9">
         <h2
-          className={`font-serif text-[clamp(2rem,1.5rem+2.2vw,3.25rem)] leading-[1.08] tracking-[-0.015em] text-balance ${dark ? 'text-ivory' : 'text-forest'}`}
+          className={`font-serif text-[2.4rem] leading-[1.05] tracking-[-0.015em] text-balance sm:text-5xl lg:text-[3.6rem] ${dark ? 'text-ivory' : 'text-forest'}`}
         >
           {title}
         </h2>

@@ -98,17 +98,17 @@ const aboutPhotos = [
 function AboutCollage() {
   return (
     <div
-      className="relative aspect-[732/673] w-full overflow-hidden rounded-2xl bg-sage-soft"
+      className="relative aspect-[732/673] w-full overflow-hidden rounded-3xl bg-sage-soft/70"
       role="group"
       aria-label="Photo collage"
     >
       {aboutPhotos.map((photo) => (
-        <div key={photo.src} className={`absolute overflow-hidden rounded-xl bg-forest/10 shadow-sm ${photo.box}`}>
+        <div key={photo.src} className={`absolute overflow-hidden bg-forest/10 shadow-sm ${photo.box}`}>
           <img
             src={photo.src}
             alt={photo.alt}
             loading="lazy"
-            className="photo-treatment h-full w-full object-cover"
+            className={`h-full w-full object-cover ${grayscale ? 'grayscale' : ''}`}
             onError={(event) => {
               event.currentTarget.style.visibility = 'hidden'
             }}
@@ -124,7 +124,7 @@ export function Hero() {
     <section
       id="home"
       aria-labelledby="hero-title"
-      className="relative isolate overflow-hidden pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-36 lg:pb-24"
+      className="relative isolate overflow-hidden pt-24 pb-12 sm:pt-28 sm:pb-14 lg:pt-32 lg:pb-16"
     >
       <div
         aria-hidden="true"
@@ -136,51 +136,46 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 -z-10"
         style={{
           background:
-            'linear-gradient(110deg, rgba(24,61,50,0.97) 0%, rgba(24,61,50,0.90) 45%, rgba(24,61,50,0.65) 100%)',
+            'linear-gradient(110deg, rgba(14,58,47,0.96) 0%, rgba(14,58,47,0.82) 48%, rgba(14,58,47,0.5) 100%)',
         }}
       />
       <FieldMap className="pointer-events-none absolute -right-24 top-10 hidden w-[52rem] max-w-none opacity-30 md:block lg:-right-10" />
 
-      <div className="relative mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-12 lg:items-center lg:gap-10">
-        <div className="lg:col-span-7 lg:pr-4">
+      <div className="relative mx-auto grid max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:items-center lg:gap-10">
+        <div className="lg:col-span-7 lg:pt-6">
           <h1
             id="hero-title"
-            className="font-serif text-[clamp(2.75rem,2rem+3.5vw,5rem)] leading-[1.02] tracking-[-0.025em] text-ivory"
+            className="mt-7 font-serif text-[3.4rem] leading-[0.95] tracking-[-0.025em] text-ivory sm:text-7xl lg:text-[6.2rem]"
             {...revealProps(80)}
           >
-            Engineering <em className="font-serif italic text-sage">Better</em>
+            Engineering <em className="text-sage">Better</em>
             <br />
             Agriculture
           </h1>
 
-          <div className="mt-8 flex flex-wrap items-center gap-2" {...revealProps(160)}>
-            <span className="rounded-full border border-sage/30 bg-forest-deep/70 px-3.5 py-1 text-xs sm:text-sm font-medium tracking-wide text-ivory">
-              Agricultural Engineering Graduate
-            </span>
-            <span className="rounded-full border border-sage/30 bg-forest-deep/70 px-3.5 py-1 text-xs sm:text-sm font-medium tracking-wide text-ivory">
-              Smart Agriculture
-            </span>
-            <span className="rounded-full border border-sage/30 bg-forest-deep/70 px-3.5 py-1 text-xs sm:text-sm font-medium tracking-wide text-ivory">
-              Agricultural Operations
-            </span>
-          </div>
-
-          <p className="mt-6 max-w-xl text-base sm:text-lg leading-relaxed text-ivory/90" {...revealProps(220)}>
+          <p className="mt-8 max-w-xl text-[1.02rem] font-semibold leading-snug text-ivory sm:text-lg" {...revealProps(160)}>
+            Agricultural Engineering Graduate
+            <span aria-hidden="true" className="mx-2 text-sage">|</span>
+            Smart Agriculture
+            <span aria-hidden="true" className="mx-2 text-sage">|</span>
+            Agricultural Operations
+          </p>
+          <p className="mt-4 max-w-xl text-lg leading-relaxed text-ivory/85" {...revealProps(220)}>
             I combine agricultural engineering, field experience, and data-driven problem-solving to explore
             practical solutions for more efficient agricultural systems.
           </p>
 
-          <div className="mt-9 flex flex-wrap gap-3" {...revealProps(280)}>
+          <div className="mt-10 flex flex-wrap gap-3" {...revealProps(280)}>
             <a
               href="#projects"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-ivory px-5 py-3 text-[0.9375rem] font-semibold text-forest transition-colors duration-300 hover:bg-sage-soft"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-ivory px-5 py-3 text-[0.95rem] font-semibold text-forest transition-colors duration-300 hover:bg-sage-soft"
             >
               Explore My Work
               <ArrowIcon />
             </a>
             <a
               href="#contact"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-ivory/50 px-5 py-3 text-[0.9375rem] font-semibold text-ivory transition-colors duration-300 hover:border-ivory hover:bg-ivory/10"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-ivory/50 px-5 py-3 text-[0.95rem] font-semibold text-ivory transition-colors duration-300 hover:border-ivory hover:bg-ivory/10"
             >
               Get in Touch
             </a>
@@ -193,7 +188,7 @@ export function Hero() {
             className="pointer-events-none absolute inset-0"
             style={{
               background:
-                'radial-gradient(60% 55% at 50% 38%, rgba(185,201,168,0.32) 0%, rgba(185,201,168,0) 70%)',
+                'radial-gradient(60% 55% at 50% 38%, rgba(169,212,188,0.38) 0%, rgba(169,212,188,0) 70%)',
             }}
           />
           <Portrait />
@@ -210,36 +205,36 @@ export function About() {
   const selectedFocusItem = coreFocusItems.find((item) => item.id === activeFocus)
 
   return (
-    <section id="about" aria-labelledby="about-title" className="py-20 lg:py-28">
+    <section id="about" aria-labelledby="about-title" className="py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <header className="mx-auto max-w-3xl text-center" {...revealProps()}>
           <h2
             id="about-title"
-            className="font-serif text-[clamp(2rem,1.5rem+2.2vw,3.25rem)] leading-[1.08] tracking-[-0.015em] text-forest"
+            className="font-serif text-[2.4rem] leading-[1.05] tracking-[-0.015em] text-balance text-forest sm:text-5xl lg:text-[3.6rem]"
           >
-            Where Agriculture <em className="font-serif italic text-terracotta-ink">Meets</em> Engineering
+            Where Agriculture <em className="text-terracotta-ink">Meets</em> Engineering
           </h2>
         </header>
 
-        <div className="mt-12 lg:mt-14 grid items-center gap-12 md:grid-cols-12 md:gap-10">
+        <div className="mt-14 grid items-center gap-12 md:grid-cols-12 md:gap-10">
           <div className="md:col-span-5" {...revealProps(100)}>
             <AboutCollage />
           </div>
 
-          <div className="space-y-6 text-base sm:text-[1.0625rem] leading-relaxed text-ink-soft md:col-span-7" {...revealProps(160)}>
-            <p className="font-serif text-[clamp(1.15rem,1.05rem+0.5vw,1.4rem)] leading-snug text-charcoal">
+          <div className="space-y-6 text-lg leading-relaxed text-ink-soft md:col-span-7" {...revealProps(160)}>
+            <p className="font-serif text-2xl leading-snug text-charcoal sm:text-[1.7rem]">
               I am an Agricultural Engineering graduate from Universitas Gadjah Mada, with an academic background in agricultural and biosystems engineering and an interest in practical, technology-driven agricultural solutions.
             </p>
-            <p className="max-w-[65ch]">
+            <p>
               Through academic projects and practical experience, I have explored agricultural production, controlled-environment cultivation, smart agriculture, IoT-based agricultural systems, and field research. My experience includes crop and environmental monitoring, field documentation, soil moisture sensor calibration, and coordinating daily plant factory operations.
             </p>
-            <p className="max-w-[65ch]">
+            <p>
               I am interested in applying engineering principles, analytical thinking, and problem-solving to improve agricultural productivity, operational efficiency, and sustainable plantation management.
             </p>
-            <div className="flex flex-wrap items-center gap-3 pt-2">
+            <div className="flex flex-wrap items-center gap-3 pt-4">
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-forest px-6 py-3 text-[0.9375rem] font-semibold text-ivory transition-colors duration-300 hover:bg-forest-deep"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-forest px-6 py-3 text-[0.95rem] font-semibold text-ivory transition-colors duration-300 hover:bg-forest-deep"
               >
                 Contact me
                 <ArrowIcon />
@@ -247,7 +242,7 @@ export function About() {
               <a
                 href={profile.cvPath}
                 download
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-forest/30 px-6 py-3 text-[0.9375rem] font-semibold text-forest transition-colors duration-300 hover:border-forest hover:bg-forest/5"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-forest/30 px-6 py-3 text-[0.95rem] font-semibold text-forest transition-colors duration-300 hover:border-forest hover:bg-forest/5"
               >
                 View My Resume
                 <DownloadIcon />
@@ -256,20 +251,20 @@ export function About() {
           </div>
         </div>
 
-        {/* --- CORE FOCUS SECTION --- */}
-        <div className="mt-20 lg:mt-24 border-t border-rule pt-16" {...revealProps()}>
+        {/* --- CORE FOCUS SECTION (Menggantikan Career Interests) --- */}
+        <div className="mt-24 border-t border-rule pt-16" {...revealProps()}>
           <div className="text-center">
-            <h3 className="font-serif text-[clamp(1.75rem,1.3rem+1.2vw,2.5rem)] text-forest">Core Focus</h3>
-            <p className="mt-3 text-base sm:text-lg text-ink-soft">
+            <h3 className="font-serif text-4xl text-forest sm:text-5xl">Core Focus</h3>
+            <p className="mt-3 text-lg text-ink-soft">
               Three principles that guide every research effort and project I take on.
             </p>
-            <p className="mt-2 text-xs font-mono uppercase tracking-[0.08em] text-ink-soft">
+            <p className="mt-2 text-xs font-mono uppercase tracking-wider text-ink-soft/70">
               Tap any one to read more about it.
             </p>
           </div>
 
           {/* 3 Tombol Lingkaran Interaktif */}
-          <div className="mt-10 flex flex-wrap justify-center gap-10 sm:gap-14">
+          <div className="mt-12 flex flex-wrap justify-center gap-10 sm:gap-16">
             {coreFocusItems.map((item) => {
               const isActive = activeFocus === item.id
               return (
@@ -284,7 +279,7 @@ export function About() {
                       className={`flex h-24 w-24 items-center justify-center rounded-full border transition-all duration-300 ${
                         isActive
                           ? 'border-terracotta bg-terracotta text-ivory shadow-md scale-105'
-                          : 'border-forest/20 bg-paper text-forest group-hover:border-forest/40 group-hover:bg-sage-soft/40'
+                          : 'border-forest/20 bg-ivory text-forest group-hover:border-forest/40 group-hover:bg-sage-soft/30'
                       }`}
                     >
                       {item.icon}
@@ -317,12 +312,12 @@ export function About() {
 
           {/* Kartu Penjelasan Putih yang Muncul saat Diklik */}
           {selectedFocusItem && (
-            <div className="relative mx-auto mt-10 max-w-2xl rounded-2xl border border-forest/15 bg-paper p-6 sm:p-8 shadow-sm transition-all duration-300">
+            <div className="relative mx-auto mt-10 max-w-2xl rounded-2xl border border-forest/15 bg-ivory p-6 sm:p-8 shadow-sm transition-all duration-300">
               {/* Panah Indikator Atas */}
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 border-x-8 border-b-8 border-x-transparent border-b-paper" />
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 border-x-8 border-b-8 border-x-transparent border-b-ivory" />
 
               <div className="flex items-center justify-between">
-                <p className="eyebrow text-terracotta-ink">
+                <p className="eyebrow text-terracotta text-[0.7rem] uppercase tracking-widest font-semibold">
                   Core Focus
                 </p>
                 <button
@@ -334,8 +329,8 @@ export function About() {
                 </button>
               </div>
 
-              <h4 className="mt-2 font-serif text-2xl sm:text-3xl font-semibold text-forest">{selectedFocusItem.title}</h4>
-              <p className="mt-4 text-base sm:text-lg leading-relaxed text-ink-soft">{selectedFocusItem.description}</p>
+              <h4 className="mt-2 font-serif text-3xl font-semibold text-forest">{selectedFocusItem.title}</h4>
+              <p className="mt-4 text-lg leading-relaxed text-ink-soft">{selectedFocusItem.description}</p>
             </div>
           )}
         </div>
@@ -346,44 +341,44 @@ export function About() {
 
 export function Education() {
   return (
-    <section id="education" aria-labelledby="education-title" className="bg-paper py-20 lg:py-28">
+    <section id="education" aria-labelledby="education-title" className="bg-paper py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         {/* Header Rata Tengah */}
         <header className="mx-auto max-w-3xl text-center" {...revealProps()}>
           <h2
             id="education-title"
-            className="font-serif text-[clamp(2rem,1.5rem+2.2vw,3.25rem)] leading-[1.08] tracking-[-0.015em] text-forest"
+            className="font-serif text-[2.4rem] leading-[1.05] tracking-[-0.015em] text-forest sm:text-5xl lg:text-[3.6rem]"
           >
             Education
           </h2>
         </header>
 
         {/* Kartu Detail Pendidikan */}
-        <article className="mt-12 lg:mt-14 grid overflow-hidden rounded-2xl border border-forest/15 bg-ivory md:grid-cols-12" {...revealProps(100)}>
+        <article className="mt-14 grid overflow-hidden rounded-[1.5rem] border border-forest/15 bg-ivory md:grid-cols-12" {...revealProps(100)}>
           <div className="graph-paper border-b border-forest/10 p-7 sm:p-10 md:col-span-5 md:border-r md:border-b-0">
             <p className="eyebrow text-terracotta-ink">{education.period}</p>
-            <h3 className="mt-4 font-serif text-3xl sm:text-4xl leading-tight text-forest">{education.institution}</h3>
-            <p className="mt-3 text-base sm:text-lg font-semibold text-charcoal">{education.degree}</p>
+            <h3 className="mt-5 font-serif text-4xl leading-tight text-forest">{education.institution}</h3>
+            <p className="mt-3 text-lg font-semibold text-charcoal">{education.degree}</p>
             <p className="mt-1 text-ink-soft">{education.department}</p>
-            <dl className="mt-8 flex gap-10">
+            <dl className="mt-10 flex gap-10">
               <div>
-                <dt className="eyebrow text-ink-soft">GPA</dt>
+                <dt className="eyebrow text-[0.65rem] text-ink-soft">GPA</dt>
                 <dd className="mt-1 font-serif text-3xl text-forest">{education.gpa}</dd>
               </div>
               <div>
-                <dt className="eyebrow text-ink-soft">Graduation</dt>
+                <dt className="eyebrow text-[0.65rem] text-ink-soft">Graduation</dt>
                 <dd className="mt-1 font-serif text-3xl text-forest">2026</dd>
               </div>
             </dl>
           </div>
-          <div className="flex flex-col justify-between gap-6 p-7 sm:p-10 md:col-span-7">
+          <div className="flex flex-col justify-between gap-8 p-7 sm:p-10 md:col-span-7">
             <div>
-              <p className="eyebrow text-terracotta-ink">Undergraduate thesis</p>
-              <blockquote className="mt-4 border-l-2 border-terracotta pl-6 font-serif text-[clamp(1.2rem,1.05rem+0.5vw,1.6rem)] leading-snug text-forest">
+              <p className="eyebrow text-ink-soft">Undergraduate thesis</p>
+              <blockquote className="mt-5 border-l-2 border-terracotta pl-6 font-serif text-2xl leading-snug text-forest sm:text-[2rem] sm:leading-[1.2]">
                 “{education.thesisTitle}.”
               </blockquote>
             </div>
-            <p className="max-w-[65ch] leading-relaxed text-ink-soft">{education.thesisSummary}</p>
+            <p className="max-w-xl leading-relaxed text-ink-soft">{education.thesisSummary}</p>
             <a href="#projects" className="link-underline self-start font-semibold text-forest">
               See related projects →
             </a>

@@ -13,16 +13,16 @@ export function Skills() {
   const active = skillCategories.find((c) => c.id === activeId) ?? skillCategories[0]
 
   return (
-    <section id="skills" aria-labelledby="skills-title" className="py-20 lg:py-28">
+    <section id="skills" aria-labelledby="skills-title" className="py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <header className="mx-auto max-w-3xl text-center" {...revealProps()}>
           <h2
             id="skills-title"
-            className="font-serif text-[clamp(2rem,1.5rem+2.2vw,3.25rem)] leading-[1.08] tracking-[-0.015em] text-forest"
+            className="font-serif text-[2.4rem] leading-[1.05] tracking-[-0.015em] text-forest sm:text-5xl lg:text-[3.6rem]"
           >
             Skills &amp; Expertise
           </h2>
-          <p className="mt-4 text-base sm:text-lg leading-relaxed text-ink-soft mx-auto max-w-3xl">
+          <p className="mt-4 text-lg leading-relaxed text-ink-soft mx-auto max-w-3xl">
             <span className="sm:block">A multidisciplinary skill set combining agricultural expertise, engineering applications,</span>
             <span className="sm:block">smart farming technologies, data-driven analysis, and project management.</span>
           </p>
@@ -88,7 +88,7 @@ export function Skills() {
           id={`panel-${active.id}`}
           role="tabpanel"
           aria-label={active.label}
-          className="mt-8 rounded-2xl border border-forest/15 bg-paper p-7 sm:p-10 lg:p-12 shadow-sm transition-all"
+          className="mt-8 rounded-[1.75rem] border border-forest/12 bg-paper p-7 sm:p-10 lg:p-12 shadow-sm transition-all"
           {...revealProps(60)}
         >
           {/* Core Competencies */}
@@ -104,7 +104,7 @@ export function Skills() {
               {active.competencies.map((item) => (
                 <li
                   key={item}
-                  className="inline-flex items-center gap-2 rounded-full bg-forest-deep px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-semibold text-ivory shadow-xs transition-transform duration-200 hover:scale-105 hover:bg-forest"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#1A2621] px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-semibold text-ivory shadow-xs transition-transform duration-200 hover:scale-105 hover:bg-forest"
                 >
                   <span aria-hidden="true" className="text-terracotta text-sm leading-none shrink-0">✦</span>
                   <span>{item}</span>
@@ -120,26 +120,26 @@ export function Skills() {
 
 export function CareerDirection() {
   return (
-    <section id="career-direction" aria-labelledby="career-direction-title" className="bg-paper py-20 lg:py-28">
+    <section id="career-direction" aria-labelledby="career-direction-title" className="bg-paper py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <header className="mx-auto max-w-3xl text-center" {...revealProps()}>
           <h2
             id="career-direction-title"
-            className="font-serif text-[clamp(2rem,1.5rem+2.2vw,3.25rem)] leading-[1.08] tracking-[-0.015em] text-forest"
+            className="font-serif text-[2.4rem] leading-[1.05] tracking-[-0.015em] text-forest sm:text-5xl lg:text-[3.6rem]"
           >
             Where I Want to Grow
           </h2>
-          <p className="mt-4 text-base sm:text-lg leading-relaxed text-ink-soft text-balance mx-auto max-w-2xl">
+          <p className="mt-4 text-lg leading-relaxed text-ink-soft text-balance mx-auto max-w-2xl">
             Exploring opportunities across plantation, agricultural engineering, and modern crop production.
           </p>
         </header>
 
         {/* ── 3 Career Pathways Cards ── */}
-        <div className="mt-12 lg:mt-14 grid gap-8 md:grid-cols-3">
+        <div className="mt-14 grid gap-8 md:grid-cols-3">
           {careerPathways.map((pathway, i) => (
             <article
               key={pathway.id}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-forest/15 bg-paper shadow-sm transition-all duration-300 hover:border-forest/30 hover:shadow-md"
+              className="group flex flex-col overflow-hidden rounded-[1.75rem] border border-forest/12 bg-white shadow-xs transition-all duration-300 hover:-translate-y-1.5 hover:border-forest/30 hover:shadow-xl"
               {...revealProps(i * 100)}
             >
               {/* Image banner */}
@@ -148,7 +148,7 @@ export function CareerDirection() {
                   src={pathway.image}
                   alt={pathway.imageAlt}
                   loading="lazy"
-                  className="photo-treatment h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   onError={(e) => {
                     e.currentTarget.style.display = 'none'
                   }}
@@ -168,14 +168,14 @@ export function CareerDirection() {
                 </p>
 
                 <div className="mt-auto pt-6 border-t border-rule/70">
-                  <p className="eyebrow text-terracotta-ink">
+                  <p className="eyebrow text-[0.68rem] font-bold tracking-widest text-terracotta-ink">
                     AREAS OF INTEREST
                   </p>
                   <div className="mt-3 flex flex-wrap gap-1.5">
                     {pathway.areasOfInterest.map((area) => (
                       <span
                         key={area}
-                        className="rounded-full border border-forest/15 bg-ivory px-3 py-1 text-xs font-medium text-charcoal transition-colors hover:border-forest/35 hover:bg-white"
+                        className="rounded-lg border border-forest/15 bg-paper px-2.5 py-1 text-xs font-medium text-charcoal transition-colors hover:border-forest/35 hover:bg-white"
                       >
                         {area}
                       </span>
@@ -189,7 +189,7 @@ export function CareerDirection() {
 
         {/* ── Closing Synthesis Callout ── */}
         <div
-          className="relative mt-14 overflow-hidden rounded-2xl border border-forest/15 bg-forest p-8 text-center text-ivory sm:p-12 lg:p-14 shadow-lg"
+          className="relative mt-14 overflow-hidden rounded-[1.75rem] border border-forest/15 bg-forest p-8 text-center text-ivory sm:p-12 lg:p-14 shadow-lg"
           {...revealProps(150)}
         >
           {/* Subtle decorative background wave */}
@@ -201,13 +201,13 @@ export function CareerDirection() {
           >
             <path
               d="M0 100 C 150 20, 300 180, 450 60 S 600 140, 650 80"
-              stroke="#B9C9A8"
+              stroke="#B7C7B0"
               strokeWidth="2"
             />
           </svg>
 
           <div className="relative mx-auto max-w-3xl">
-            <span className="eyebrow text-sage">
+            <span className="eyebrow text-xs font-bold uppercase tracking-[0.2em] text-sage">
               Professional Direction
             </span>
             <p className="mt-4 font-serif text-xl sm:text-2xl leading-relaxed text-ivory/95">
@@ -252,33 +252,33 @@ export function Contact() {
   ]
 
   return (
-    <section id="contact" aria-labelledby="contact-title" className="relative overflow-hidden bg-forest py-20 text-ivory on-dark lg:py-28">
+    <section id="contact" aria-labelledby="contact-title" className="relative overflow-hidden bg-forest py-24 text-ivory on-dark lg:py-32">
       <svg aria-hidden="true" viewBox="0 0 600 400" className="pointer-events-none absolute -right-20 -bottom-10 w-[44rem] max-w-none opacity-[0.12]" fill="none">
         {Array.from({ length: 9 }).map((_, i) => (
-          <path key={i} d={`M-20 ${380 - i * 38} C 120 ${330 - i * 40}, 260 ${370 - i * 36}, 380 ${310 - i * 40} S 560 ${250 - i * 36}, 640 ${270 - i * 40}`} stroke="#B9C9A8" />
+          <path key={i} d={`M-20 ${380 - i * 38} C 120 ${330 - i * 40}, 260 ${370 - i * 36}, 380 ${310 - i * 40} S 560 ${250 - i * 36}, 640 ${270 - i * 40}`} stroke="#B7C7B0" />
         ))}
       </svg>
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <header className="mx-auto max-w-3xl text-center" {...revealProps()}>
           <h2
             id="contact-title"
-            className="font-serif text-[clamp(2rem,1.5rem+2.2vw,3.25rem)] leading-[1.08] tracking-[-0.015em] text-ivory"
+            className="font-serif text-[2.4rem] leading-[1.05] tracking-[-0.015em] text-ivory sm:text-5xl lg:text-[3.6rem]"
           >
             Let's Connect.
           </h2>
-          <p className="mt-5 text-base sm:text-lg leading-relaxed text-sage-soft/90 max-w-2xl mx-auto">
+          <p className="mt-5 text-lg leading-relaxed text-sage-soft/90 max-w-2xl mx-auto">
             I'm always open to new opportunities, professional collaborations, and meaningful conversations across the agricultural industry. Feel free to reach out and let's connect.
           </p>
         </header>
 
-        <div className="mt-12 lg:mt-14 max-w-3xl mx-auto" {...revealProps(100)}>
+        <div className="mt-14 max-w-3xl mx-auto" {...revealProps(100)}>
           <dl className="grid gap-px overflow-hidden rounded-2xl border border-ivory/15 bg-ivory/15 shadow-xl">
             {contactRows.map((row) => (
               <div
                 key={row.label}
-                className="flex flex-col gap-1.5 bg-forest px-6 py-4 sm:flex-row sm:items-center sm:justify-between transition-colors hover:bg-forest-deep/60"
+                className="flex flex-col gap-1.5 bg-forest px-6 py-4.5 sm:flex-row sm:items-center sm:justify-between transition-colors hover:bg-forest-deep/60"
               >
-                <dt className="eyebrow text-sage font-semibold">
+                <dt className="font-mono text-[0.72rem] uppercase tracking-[0.12em] text-sage font-semibold">
                   {row.label}
                 </dt>
                 <dd className="break-all text-ivory text-sm sm:text-base font-medium">
