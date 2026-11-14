@@ -47,9 +47,8 @@ const coreFocusItems = [
   },
 ]
 
-// Fades the photo's sides and bottom into the hero background.
-const portraitMask =
-  'linear-gradient(to bottom, #000 60%, transparent 100%), linear-gradient(to right, transparent 0%, #000 22%, #000 78%, transparent 100%)'
+// Fades the photo's bottom smoothly into the hero background.
+const portraitMask = 'linear-gradient(to bottom, #000 80%, transparent 100%)'
 
 function Portrait() {
   if (profile.portrait) {
@@ -58,18 +57,16 @@ function Portrait() {
         src={profile.portrait}
         alt={`Portrait of ${profile.name}`}
         fetchPriority="high"
-        className="relative mx-auto h-[26rem] w-auto max-w-full object-contain object-bottom sm:h-[32rem] lg:h-[40rem]"
+        className="relative mx-auto h-[26rem] w-auto max-w-full object-contain object-bottom sm:h-[32rem] lg:h-[39rem]"
         style={{
           maskImage: portraitMask,
           WebkitMaskImage: portraitMask,
-          maskComposite: 'intersect',
-          WebkitMaskComposite: 'source-in',
         }}
       />
     )
   }
   return (
-    <div className="relative mx-auto flex h-[26rem] w-64 flex-col items-center justify-end rounded-3xl bg-sage-soft/20 text-ivory lg:h-[34rem]">
+    <div className="relative mx-auto flex h-[26rem] w-64 flex-col items-center justify-end rounded-3xl bg-sage-soft/30 text-charcoal lg:h-[34rem]">
       <span className="eyebrow mb-5 text-[0.65rem]">Portrait placeholder</span>
     </div>
   )
@@ -124,73 +121,91 @@ export function Hero() {
     <section
       id="home"
       aria-labelledby="hero-title"
-      className="relative isolate overflow-hidden pt-24 pb-12 sm:pt-28 sm:pb-14 lg:pt-32 lg:pb-16"
+      className="relative isolate overflow-hidden pt-28 pb-12 sm:pt-32 sm:pb-16 lg:pt-36 lg:pb-20"
     >
+      {/* Background cornfield photo in warm natural light */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-20 bg-cover bg-center"
         style={{ backgroundImage: "url('/hero-background.jpg')" }}
       />
+      {/* Luminous light-cream gradient overlay for contrast while preserving cornfield scenery */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10"
-        style={{
-          background:
-            'linear-gradient(110deg, rgba(14,58,47,0.96) 0%, rgba(14,58,47,0.82) 48%, rgba(14,58,47,0.5) 100%)',
-        }}
+        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-[#F6F4EC]/96 via-[#F6F4EC]/88 to-[#F6F4EC]/35"
       />
-      <FieldMap className="pointer-events-none absolute -right-24 top-10 hidden w-[52rem] max-w-none opacity-30 md:block lg:-right-10" />
+      {/* Subtle warm sun glow in upper-middle */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute top-0 left-1/3 -z-10 h-80 w-96 rounded-full bg-amber-100/50 blur-3xl"
+      />
 
-      <div className="relative mx-auto grid max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:items-center lg:gap-10">
-        <div className="lg:col-span-7 lg:pt-6">
+      {/* FieldMap contour lines with sensor nodes (SM-01) */}
+      <FieldMap className="pointer-events-none absolute -right-16 top-4 hidden w-[56rem] max-w-none opacity-45 md:block lg:right-6" />
+
+      <div className="relative mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-12 lg:items-center lg:gap-8">
+        <div className="lg:col-span-7 lg:pt-4">
           <h1
             id="hero-title"
-            className="mt-7 font-serif text-[3.4rem] leading-[0.95] tracking-[-0.025em] text-ivory sm:text-7xl lg:text-[6.2rem]"
+            className="font-sans text-[3.2rem] font-black leading-[0.92] tracking-[-0.035em] text-[#15221B] sm:text-6xl lg:text-[5.4rem]"
             {...revealProps(80)}
           >
-            Engineering <em className="text-sage">Better</em>
+            Engineering
+            <br />
+            <span className="font-serif italic font-normal text-[#E05A36] tracking-tight">Better</span>
             <br />
             Agriculture
           </h1>
 
-          <p className="mt-8 max-w-xl text-[1.02rem] font-semibold leading-snug text-ivory sm:text-lg" {...revealProps(160)}>
-            Agricultural Engineering Graduate
-            <span aria-hidden="true" className="mx-2 text-sage">|</span>
-            Smart Agriculture
-            <span aria-hidden="true" className="mx-2 text-sage">|</span>
-            Agricultural Operations
+          {/* Subtitle / Eyebrow with high-contrast text and terracotta slashes */}
+          <p
+            className="mt-6 flex flex-wrap items-center font-mono text-xs sm:text-[0.82rem] font-bold tracking-wider text-[#1F2B24] uppercase"
+            {...revealProps(160)}
+          >
+            <span>Agricultural Engineering Graduate</span>
+            <span aria-hidden="true" className="mx-2.5 text-[#E05A36] font-extrabold">/</span>
+            <span>Smart Agriculture</span>
+            <span aria-hidden="true" className="mx-2.5 text-[#E05A36] font-extrabold">/</span>
+            <span>Agricultural Operations</span>
           </p>
-          <p className="mt-4 max-w-xl text-lg leading-relaxed text-ivory/85" {...revealProps(220)}>
+
+          {/* Clear, readable paragraph with solid contrast */}
+          <p
+            className="mt-4 max-w-xl text-base sm:text-[1.08rem] font-medium leading-relaxed text-[#252B27]"
+            {...revealProps(220)}
+          >
             I combine agricultural engineering, field experience, and data-driven problem-solving to explore
             practical solutions for more efficient agricultural systems.
           </p>
 
-          <div className="mt-10 flex flex-wrap gap-3" {...revealProps(280)}>
+          {/* 3 Action Buttons matching the reference image */}
+          <div className="mt-8 flex flex-wrap items-center gap-3" {...revealProps(280)}>
             <a
               href="#projects"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-ivory px-5 py-3 text-[0.95rem] font-semibold text-forest transition-colors duration-300 hover:bg-sage-soft"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#E05A36] px-6 py-3.5 text-sm sm:text-[0.95rem] font-semibold text-white shadow-md transition-all duration-300 hover:brightness-110 active:scale-95"
             >
-              Explore My Work
+              <span>Explore My Work</span>
               <ArrowIcon />
             </a>
             <a
               href="#contact"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-ivory/50 px-5 py-3 text-[0.95rem] font-semibold text-ivory transition-colors duration-300 hover:border-ivory hover:bg-ivory/10"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-[#252B27]/25 bg-white/80 px-6 py-3.5 text-sm sm:text-[0.95rem] font-semibold text-[#252B27] backdrop-blur-sm shadow-xs transition-all duration-300 hover:bg-white hover:border-[#252B27]/40 active:scale-95"
             >
-              Get in Touch
+              <span>Get in Touch</span>
+            </a>
+            <a
+              href={profile.cvPath}
+              download
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#37453F]/90 px-5 py-3.5 text-sm sm:text-[0.95rem] font-semibold text-white shadow-xs backdrop-blur-sm transition-all duration-300 hover:bg-[#252B27] active:scale-95"
+            >
+              <DownloadIcon className="h-4 w-4" />
+              <span>Resume PDF</span>
             </a>
           </div>
         </div>
 
+        {/* Right column: Natural-light portrait */}
         <div className="relative lg:col-span-5 lg:self-end" {...revealProps(200)}>
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0"
-            style={{
-              background:
-                'radial-gradient(60% 55% at 50% 38%, rgba(169,212,188,0.38) 0%, rgba(169,212,188,0) 70%)',
-            }}
-          />
           <Portrait />
         </div>
       </div>
