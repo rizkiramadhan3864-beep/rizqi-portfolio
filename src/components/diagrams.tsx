@@ -7,13 +7,16 @@ import type { ProjectId } from '../content/profile'
  */
 
 const C = {
-  forest: '#183D32',
-  sage: '#B7C7B0',
-  sageSoft: '#DFE6D8',
-  ivory: '#F6F4EC',
-  paper: '#FBFAF5',
-  terracotta: '#C77B57',
-  ink: '#4F5751',
+  forest: '#153F35',
+  forestDeep: '#102C26',
+  lime: '#B9E769',
+  sage: '#DCE7D5',
+  sageSoft: '#E8F0E4',
+  ivory: '#F5F2E9',
+  paper: '#FFFFFF',
+  terracotta: '#E6A17B',
+  ink: '#66736B',
+  navy: '#252F42',
 }
 
 /** Hero backdrop: field-map contours crossed by irrigation laterals with sensor nodes. */

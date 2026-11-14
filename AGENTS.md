@@ -31,7 +31,12 @@ public/img/                 # the portrait goes here
 
 ## Conventions
 
-- Palette: forest #183D32, sage #B7C7B0, ivory #F6F4EC, charcoal #252B27, terracotta #C77B57. Use `text-terracotta-ink` (#9B5132) for terracotta *text* on light backgrounds, for contrast.
+- Palette: forest #153F35, forest-deep #102C26, lime #B9E769, cream/ivory #F5F2E9, white #FFFFFF, terracotta/coral #E66B45, navy #252F42, sage #DCE7D5, charcoal #252B27.
 - Serif (`font-serif`) is only for editorial headings. Mono (`font-mono`, `.eyebrow`) is for labels.
 - Animate with `revealProps(delay)` only. It respects `prefers-reduced-motion`, and content stays visible without JS.
 - Section headers use `<SectionHeader index label title />` with sequential § numbers.
+
+## Workflow Rules (MANDATORY)
+
+- Every update must automatically be committed and pushed to GitHub (`origin main`) without waiting for the user to explicitly ask.
+- Always run `npm run typecheck && npm run build` to ensure 0 errors before committing and pushing.

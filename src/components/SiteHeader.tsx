@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 import { navItems, profile } from '../content/profile'
-import { DownloadIcon } from './ui'
 
 export function SiteHeader() {
   const [active, setActive] = useState('home')
@@ -24,13 +23,13 @@ export function SiteHeader() {
           }
         }
       },
-      { rootMargin: '-30% 0px -65% 0px' },
+      { rootMargin: '-25% 0px -60% 0px' },
     )
 
     sections.forEach((section) => observer.observe(section))
 
     const onScroll = () => {
-      setScrolled(window.scrollY > 12)
+      setScrolled(window.scrollY > 15)
     }
 
     onScroll()
@@ -42,12 +41,11 @@ export function SiteHeader() {
     }
   }, [])
 
-  // Handle mobile navigation and restore the page scroll state.
+  // Handle mobile navigation accessibility
   useEffect(() => {
     if (!open) return
 
     const previousOverflow = document.body.style.overflow
-
     document.body.style.overflow = 'hidden'
     menuRef.current?.querySelector<HTMLElement>('a')?.focus()
 
@@ -77,25 +75,16 @@ export function SiteHeader() {
   const closeMenu = () => setOpen(false)
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${
-        scrolled || open
-          ? 'border-rule bg-ivory/95 shadow-[0_4px_24px_rgb(14_58_47/0.06)] backdrop-blur-md'
-          : 'border-transparent bg-ivory/80 backdrop-blur-sm'
-      }`}
-    >
+    <header className="fixed inset-x-0 top-0 z-50 bg-[#252C29] border-b border-white/10 shadow-lg transition-all duration-300">
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-[60] focus:rounded-full focus:bg-forest focus:px-4 focus:py-2 focus:text-ivory"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-6 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-[#E66B45] focus:px-4 focus:py-2 focus:text-white"
       >
         Skip to content
       </a>
 
-      <nav
-        aria-label="Primary navigation"
-        className="mx-auto flex h-[4.5rem] max-w-7xl items-center justify-between gap-4 px-5 sm:px-8 lg:px-10"
-      >
-        {/* Brand */}
+      <div className="mx-auto flex h-18 sm:h-20 max-w-7xl items-center justify-between px-4 sm:px-8">
+        {/* Brand / Logo */}
         <a
           href="#home"
           onClick={closeMenu}
@@ -104,110 +93,124 @@ export function SiteHeader() {
         >
           <span
             aria-hidden="true"
-            className="grid h-9 w-9 place-items-center rounded-full bg-forest text-ivory transition-transform duration-300 group-hover:rotate-[-8deg]"
+            className="grid h-9 w-9 place-items-center rounded-full bg-forest text-white transition-transform duration-300 group-hover:rotate-[-6deg] group-hover:scale-105 shadow-xs border border-white/15"
           >
-            <svg viewBox="0 0 24 24" className="h-[1.125rem] w-[1.125rem]" fill="none">
+            <svg viewBox="0 0 24 24" className="h-[1.15rem] w-[1.15rem]" fill="none">
               <path d="M12 20V9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-              <path d="M12 13c-3.6 0-5.5-2.3-5.5-5.5 3.6 0 5.5 2.3 5.5 5.5Z" fill="#A9D4BC" />
-              <path d="M12 10.5c0-3.2 2-5 5.5-5 0 3.2-2 5-5.5 5Z" fill="#2BA3B5" />
+              <path d="M12 13c-3.6 0-5.5-2.3-5.5-5.5 3.6 0 5.5 2.3 5.5 5.5Z" fill="#DCE7D5" />
+              <path d="M12 10.5c0-3.2 2-5 5.5-5 0 3.2-2 5-5.5 5Z" fill="#E66B45" />
             </svg>
           </span>
 
-          <span className="text-base font-semibold tracking-tight text-forest sm:text-[1.05rem]">
-            {profile.shortName}
-          </span>
+          <div className="flex flex-col">
+            <span className="text-sm sm:text-[0.95rem] font-bold tracking-tight text-white group-hover:text-[#E66B45] transition-colors">
+              {profile.shortName}
+            </span>
+            <span className="font-mono text-[0.62rem] uppercase tracking-wider text-sage-soft/70 hidden sm:block">
+              UGM · Agri-Tech
+            </span>
+          </div>
         </a>
 
-        {/* Desktop navigation */}
-        <ul className="hidden items-center gap-6 lg:flex xl:gap-8">
-          {navItems.map((item) => {
-            const isActive = active === item.id
-
-            return (
-              <li key={item.id}>
-                <a
-                  href={`#${item.id}`}
-                  aria-current={isActive ? 'location' : undefined}
-                  className={`relative py-2 text-sm font-medium transition-colors duration-200 xl:text-[0.92rem] ${
-                    isActive ? 'text-forest' : 'text-ink-soft hover:text-forest'
-                  }`}
-                >
-                  {item.label}
-
-                  <span
-                    aria-hidden="true"
-                    className={`absolute inset-x-0 -bottom-0.5 h-[2px] origin-left rounded-full bg-terracotta-ink transition-transform duration-300 ${
-                      isActive ? 'scale-x-100' : 'scale-x-0'
+        {/* Center Navigation Capsule as shown in the reference image */}
+        <nav aria-label="Primary navigation" className="hidden lg:block">
+          <ul className="flex items-center rounded-full bg-[#343B38] border border-white/10 p-1.5 shadow-inner">
+            {navItems.map((item) => {
+              const isActive = active === item.id
+              return (
+                <li key={item.id}>
+                  <a
+                    href={`#${item.id}`}
+                    aria-current={isActive ? 'location' : undefined}
+                    className={`inline-flex items-center px-4 xl:px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
+                      isActive
+                        ? 'bg-[#E66B45] text-white shadow-md font-bold'
+                        : 'text-[#F2F0EA] hover:text-white hover:bg-white/5'
                     }`}
-                  />
-                </a>
-              </li>
-            )
-          })}
-        </ul>
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              )
+            })}
+          </ul>
+        </nav>
 
-        {/* Actions */}
+        {/* Action Buttons on Right: Download CV in terracotta as shown in the reference image */}
         <div className="flex shrink-0 items-center gap-3">
           <a
             href={profile.cvPath}
             download
-            className="btn-primary hidden items-center gap-2 px-4 py-2.5 text-sm sm:inline-flex"
+            className="inline-flex items-center gap-2 rounded-xl bg-[#E66B45] px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:brightness-110 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
           >
-            <DownloadIcon />
+            {/* Tray Download Icon */}
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" className="h-4 w-4 shrink-0">
+              <path d="M10 3v8.5m-3.5-3.5 3.5 3.5 3.5-3.5M4 14.5v1a1.5 1.5 0 0 0 1.5 1.5h9a1.5 1.5 0 0 0 1.5-1.5v-1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
             <span>Download CV</span>
           </a>
 
+          {/* Mobile Menu Toggle Button */}
           <button
             ref={toggleRef}
             type="button"
-            className="grid h-10 w-10 place-items-center rounded-full border border-forest/20 text-forest transition-colors hover:bg-forest/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-ink lg:hidden"
+            className="grid h-10 w-10 place-items-center rounded-full border border-white/20 bg-white/5 text-white transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
             onClick={() => setOpen((value) => !value)}
           >
-            <span aria-hidden="true" className="relative block h-3 w-5">
+            <span aria-hidden="true" className="relative block h-3 w-4">
               <span
-                className={`absolute left-0 h-[1.5px] w-5 rounded-full bg-current transition-all duration-300 ${
+                className={`absolute left-0 h-[2px] w-4 rounded-full bg-current transition-all duration-300 ${
                   open ? 'top-1.5 rotate-45' : 'top-0'
                 }`}
               />
               <span
-                className={`absolute left-0 h-[1.5px] w-5 rounded-full bg-current transition-all duration-300 ${
-                  open ? 'top-1.5 -rotate-45' : 'top-3'
+                className={`absolute left-0 h-[2px] w-4 rounded-full bg-current transition-all duration-300 ${
+                  open ? 'top-1.5 -rotate-45' : 'top-2.5'
                 }`}
               />
             </span>
           </button>
         </div>
-      </nav>
+      </div>
 
-      {/* Mobile navigation */}
+      {/* Mobile Drawer Navigation */}
       <div
         id="mobile-menu"
         ref={menuRef}
         hidden={!open}
-        className="graph-paper h-[calc(100dvh-4.5rem)] overflow-y-auto border-t border-rule bg-ivory px-5 pb-10 pt-6 sm:px-8 lg:hidden"
+        className="border-t border-white/10 bg-[#252C29] px-5 pb-8 pt-5 shadow-2xl transition-all duration-300 lg:hidden"
       >
-        <p className="eyebrow text-terracotta-ink">Explore</p>
+        <div className="flex items-center justify-between pb-3 border-b border-white/10">
+          <p className="eyebrow text-sage-soft/70">Navigation Index</p>
+          <span className="font-mono text-[0.68rem] text-[#E66B45]">FIELDNOTES // '26</span>
+        </div>
 
-        <ul className="mt-4 divide-y divide-rule border-y border-rule">
+        <ul className="mt-3 divide-y divide-white/5">
           {navItems.map((item, index) => {
             const isActive = active === item.id
-
             return (
               <li key={item.id}>
                 <a
                   href={`#${item.id}`}
                   onClick={closeMenu}
                   aria-current={isActive ? 'location' : undefined}
-                  className={`flex items-baseline justify-between py-4 font-serif text-3xl transition-colors ${
-                    isActive ? 'text-terracotta-ink' : 'text-forest'
+                  className={`flex items-center justify-between py-3.5 text-lg font-medium transition-all ${
+                    isActive
+                      ? 'text-[#E66B45] font-bold translate-x-1'
+                      : 'text-[#F2F0EA] hover:text-white'
                   }`}
                 >
-                  <span>{item.label}</span>
-                  <span className="font-mono text-xs text-ink-soft">
-                    {String(index + 1).padStart(2, '0')}
+                  <span className="flex items-center gap-3">
+                    {isActive && (
+                      <span className="h-2 w-2 rounded-full bg-[#E66B45] shrink-0 shadow-xs" />
+                    )}
+                    {item.label}
+                  </span>
+                  <span className="font-mono text-xs text-sage-soft/50">
+                    § {String(index + 1).padStart(2, '0')}
                   </span>
                 </a>
               </li>
@@ -215,10 +218,19 @@ export function SiteHeader() {
           })}
         </ul>
 
-        <a href={profile.cvPath} download className="btn-primary mt-8 w-full" onClick={closeMenu}>
-          <DownloadIcon />
-          Download CV
-        </a>
+        <div className="mt-6 pt-4 border-t border-white/10">
+          <a
+            href={profile.cvPath}
+            download
+            className="flex items-center justify-center gap-2 rounded-xl bg-[#E66B45] w-full py-3 text-sm font-semibold text-white shadow-md hover:brightness-110 transition-all"
+            onClick={closeMenu}
+          >
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" className="h-4 w-4 shrink-0">
+              <path d="M10 3v8.5m-3.5-3.5 3.5 3.5 3.5-3.5M4 14.5v1a1.5 1.5 0 0 0 1.5 1.5h9a1.5 1.5 0 0 0 1.5-1.5v-1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <span>Download Curriculum Vitae (PDF)</span>
+          </a>
+        </div>
       </div>
     </header>
   )
