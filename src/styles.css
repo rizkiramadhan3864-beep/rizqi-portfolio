@@ -1,26 +1,18 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-forest: #153F35;
-  --color-forest-deep: #102C26;
-  --color-lime: #B9E769;
-  --color-cream: #F5F2E9;
-  --color-white: #FFFFFF;
-  --color-coral: #E66B45;
-  --color-navy: #252F42;
-  --color-sage: #DCE7D5;
-  --color-sage-soft: #E8F0E4;
-  --color-charcoal: #252B27;
-  --color-ink-soft: #66736B;
-  --color-header-bg: #242C29;
-  --color-nav-capsule: #343B38;
-
-  /* Aliases for compatibility */
-  --color-ivory: #F5F2E9;
-  --color-paper: #FFFFFF;
-  --color-terracotta: #E66B45;
-  --color-terracotta-ink: #BA4E2C;
-  --color-rule: #DCE3D6;
+  --color-forest: #183d32;
+  --color-forest-deep: #102a22;
+  --color-sage: #b7c7b0;
+  --color-sage-soft: #dfe6d8;
+  --color-ivory: #f6f4ec;
+  --color-paper: #fbfaf5;
+  --color-charcoal: #252b27;
+  --color-ink-soft: #4f5751;
+  --color-terracotta: #c77b57;
+  /* Darker terracotta for text on light backgrounds (meets WCAG AA). */
+  --color-terracotta-ink: #9b5132;
+  --color-rule: #d9d6c8;
 
   --font-sans: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
   --font-serif: 'Newsreader', ui-serif, Georgia, serif;
@@ -32,49 +24,42 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5.5rem;
+    scroll-padding-top: 5rem;
     -webkit-text-size-adjust: 100%;
   }
   body {
-    @apply bg-cream text-charcoal font-sans antialiased;
+    @apply bg-ivory text-charcoal font-sans antialiased;
     text-rendering: optimizeLegibility;
   }
   ::selection {
-    background: var(--color-lime);
+    background: var(--color-sage);
     color: var(--color-forest-deep);
   }
   :focus-visible {
-    outline: 2px solid var(--color-forest);
+    outline: 2px solid var(--color-terracotta-ink);
     outline-offset: 3px;
     border-radius: 4px;
   }
   .on-dark :focus-visible,
   .on-dark:focus-visible {
-    outline-color: var(--color-lime);
+    outline-color: var(--color-sage);
   }
 }
 
 @layer components {
-  /* Faint graph-paper grid, like a surveyor's field notebook */
+  /* Faint graph-paper grid, like a surveyor's field notebook. */
   .graph-paper {
     background-image:
-      linear-gradient(to right, rgb(21 63 53 / 0.045) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(21 63 53 / 0.045) 1px, transparent 1px);
-    background-size: 28px 28px;
-  }
-
-  .graph-paper-dark {
-    background-image:
-      linear-gradient(to right, rgb(185 231 105 / 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(185 231 105 / 0.05) 1px, transparent 1px);
+      linear-gradient(to right, rgb(24 61 50 / 0.055) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(24 61 50 / 0.055) 1px, transparent 1px);
     background-size: 28px 28px;
   }
 
   .eyebrow {
-    @apply font-mono text-[0.72rem] font-medium tracking-[0.16em] uppercase;
+    @apply font-mono text-[0.72rem] font-medium tracking-[0.14em] uppercase;
   }
 
-  /* Ruler-tick divider used between sections */
+  /* Ruler-tick divider used between sections. */
   .ruler {
     height: 12px;
     background-image:
@@ -85,39 +70,23 @@
       120px 12px;
     background-repeat: repeat-x;
     background-position: left bottom;
-    opacity: 0.6;
+    opacity: 0.55;
   }
 
   .btn-primary,
-  .btn-lime,
-  .btn-ghost,
-  .btn-navy {
+  .btn-ghost {
     @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-[0.95rem] font-semibold transition-all duration-300;
     transition-timing-function: var(--ease-field);
   }
-
   .btn-primary {
-    @apply bg-forest text-white hover:bg-forest-deep shadow-sm hover:shadow;
+    @apply bg-forest text-ivory hover:bg-forest-deep;
   }
   .btn-primary:hover .btn-arrow {
     transform: translateX(3px);
   }
-
-  .btn-lime {
-    @apply bg-lime text-forest-deep hover:brightness-105 shadow-sm hover:shadow;
-  }
-  .btn-lime:hover .btn-arrow {
-    transform: translateX(3px);
-  }
-
   .btn-ghost {
-    @apply border border-forest/25 text-forest hover:border-forest hover:bg-forest/5;
+    @apply border border-forest/30 text-forest hover:border-forest hover:bg-forest/5;
   }
-
-  .btn-navy {
-    @apply bg-navy text-white hover:bg-navy/90 shadow-sm hover:shadow;
-  }
-
   .btn-arrow {
     transition: transform 300ms var(--ease-field);
   }
@@ -134,7 +103,7 @@
     background-size: 100% 1px;
   }
 
-  /* Corner crop marks around plates and figures */
+  /* Corner crop marks around plates and figures. */
   .crop-marks {
     position: relative;
   }
@@ -146,23 +115,23 @@
     height: 14px;
     pointer-events: none;
     border-color: var(--color-forest);
-    opacity: 0.4;
+    opacity: 0.6;
   }
   .crop-marks::before {
-    top: -6px;
-    left: -6px;
-    border-top: 1.5px solid;
-    border-left: 1.5px solid;
+    top: -7px;
+    left: -7px;
+    border-top: 1px solid;
+    border-left: 1px solid;
   }
   .crop-marks::after {
-    bottom: -6px;
-    right: -6px;
-    border-bottom: 1.5px solid;
-    border-right: 1.5px solid;
+    bottom: -7px;
+    right: -7px;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
   }
 }
 
-/* Scroll-reveal: only hides content when JS is running */
+/* Scroll-reveal: only hides content when JS is running (class set in index.html). */
 .js [data-reveal] {
   opacity: 0;
   transform: translateY(18px);
@@ -176,7 +145,7 @@
   transform: none;
 }
 
-/* Slow growth of contour lines in the hero field map */
+/* Slow growth of contour lines in the hero field map. */
 .contour-draw path {
   stroke-dasharray: 1400;
   stroke-dashoffset: 1400;
@@ -200,8 +169,7 @@
 }
 
 dialog::backdrop {
-  background: rgb(16 44 38 / 0.68);
-  backdrop-filter: blur(4px);
+  background: rgb(16 42 34 / 0.55);
 }
 dialog[open] {
   animation: dialog-in 350ms var(--ease-field);
@@ -209,11 +177,7 @@ dialog[open] {
 @keyframes dialog-in {
   from {
     opacity: 0;
-    transform: translateY(14px) scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(12px);
   }
 }
 
