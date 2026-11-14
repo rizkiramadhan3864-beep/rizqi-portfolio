@@ -72,7 +72,7 @@ function Portrait() {
   )
 }
 
-const grayscale = true
+const grayscale = false
 
 const aboutPhotos = [
   {
