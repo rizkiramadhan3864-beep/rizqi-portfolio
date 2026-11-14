@@ -220,7 +220,7 @@ export function About() {
   const selectedFocusItem = coreFocusItems.find((item) => item.id === activeFocus)
 
   return (
-    <section id="about" aria-labelledby="about-title" className="py-24 lg:py-32">
+    <section id="about" aria-labelledby="about-title" className="bg-white py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <header className="mx-auto max-w-3xl text-center" {...revealProps()}>
           <h2
@@ -236,31 +236,31 @@ export function About() {
             <AboutCollage />
           </div>
 
-          <div className="space-y-6 text-lg leading-relaxed text-ink-soft md:col-span-7" {...revealProps(160)}>
-            <p className="font-serif text-2xl leading-snug text-charcoal sm:text-[1.7rem]">
+          <div className="space-y-6 md:col-span-7" {...revealProps(160)}>
+            <p className="font-sans text-2xl font-bold leading-snug tracking-tight text-[#16201A] sm:text-[1.75rem]">
               I am an Agricultural Engineering graduate from Universitas Gadjah Mada, with an academic background in agricultural and biosystems engineering and an interest in practical, technology-driven agricultural solutions.
             </p>
-            <p>
+            <p className="text-base leading-relaxed text-ink-soft sm:text-[1.05rem]">
               Through academic projects and practical experience, I have explored agricultural production, controlled-environment cultivation, smart agriculture, IoT-based agricultural systems, and field research. My experience includes crop and environmental monitoring, field documentation, soil moisture sensor calibration, and coordinating daily plant factory operations.
             </p>
-            <p>
+            <p className="text-base leading-relaxed text-ink-soft sm:text-[1.05rem]">
               I am interested in applying engineering principles, analytical thinking, and problem-solving to improve agricultural productivity, operational efficiency, and sustainable plantation management.
             </p>
-            <div className="flex flex-wrap items-center gap-3 pt-4">
+            <div className="flex flex-wrap items-center gap-3.5 pt-4">
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-forest px-6 py-3 text-[0.95rem] font-semibold text-ivory transition-colors duration-300 hover:bg-forest-deep"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-forest px-7 py-3 text-[0.95rem] font-semibold text-white shadow-xs transition-all duration-300 hover:bg-forest-deep active:scale-95"
               >
-                Contact me
-                <ArrowIcon />
+                <span>Contact me</span>
+                <ArrowIcon className="h-4 w-4" />
               </a>
               <a
                 href={profile.cvPath}
                 download
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-forest/30 px-6 py-3 text-[0.95rem] font-semibold text-forest transition-colors duration-300 hover:border-forest hover:bg-forest/5"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-neutral-300 bg-white px-7 py-3 text-[0.95rem] font-semibold text-forest shadow-xs transition-all duration-300 hover:border-forest hover:bg-neutral-50 active:scale-95"
               >
-                View My Resume
-                <DownloadIcon />
+                <span>View My Resume</span>
+                <DownloadIcon className="h-4 w-4" />
               </a>
             </div>
           </div>
