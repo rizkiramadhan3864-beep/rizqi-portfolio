@@ -1,7 +1,5 @@
 import { useState } from 'react'
 import {
-  careerClosingNote,
-  careerPathways,
   isPlaceholder,
   profile,
   skillCategories,
@@ -117,111 +115,6 @@ export function Skills() {
     </section>
   )
 }
-
-export function CareerDirection() {
-  return (
-    <section id="career-direction" aria-labelledby="career-direction-title" className="bg-paper py-24 lg:py-32">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <header className="mx-auto max-w-3xl text-center" {...revealProps()}>
-          <h2
-            id="career-direction-title"
-            className="font-serif text-[2.4rem] leading-[1.05] tracking-[-0.015em] text-forest sm:text-5xl lg:text-[3.6rem]"
-          >
-            Where I Want to Grow
-          </h2>
-          <p className="mt-4 text-lg leading-relaxed text-ink-soft text-balance mx-auto max-w-2xl">
-            Exploring opportunities across plantation, agricultural engineering, and modern crop production.
-          </p>
-        </header>
-
-        {/* ── 3 Career Pathways Cards ── */}
-        <div className="mt-14 grid gap-8 md:grid-cols-3">
-          {careerPathways.map((pathway, i) => (
-            <article
-              key={pathway.id}
-              className="group flex flex-col overflow-hidden rounded-[1.75rem] border border-forest/12 bg-white shadow-xs transition-all duration-300 hover:-translate-y-1.5 hover:border-forest/30 hover:shadow-xl"
-              {...revealProps(i * 100)}
-            >
-              {/* Image banner */}
-              <div className="relative aspect-[16/10] overflow-hidden bg-sage-soft">
-                <img
-                  src={pathway.image}
-                  alt={pathway.imageAlt}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  onError={(e) => {
-                    e.currentTarget.style.display = 'none'
-                  }}
-                />
-                {/* Cover baked-in number badge at top-left of original images */}
-                <div className="absolute top-0 left-0 h-12 w-16 bg-gradient-to-br from-black/60 via-black/20 to-transparent pointer-events-none" />
-              </div>
-
-              {/* Card content */}
-              <div className="flex flex-1 flex-col p-6 sm:p-7">
-                <h3 className="font-serif text-xl sm:text-2xl font-bold leading-snug text-forest transition-colors duration-200 group-hover:text-forest-deep">
-                  {pathway.title.replace(/^\d+\.\s*/, '')}
-                </h3>
-
-                <p className="mt-4 text-sm leading-relaxed text-ink-soft">
-                  {pathway.description}
-                </p>
-
-                <div className="mt-auto pt-6 border-t border-rule/70">
-                  <p className="eyebrow text-[0.68rem] font-bold tracking-widest text-terracotta-ink">
-                    AREAS OF INTEREST
-                  </p>
-                  <div className="mt-3 flex flex-wrap gap-1.5">
-                    {pathway.areasOfInterest.map((area) => (
-                      <span
-                        key={area}
-                        className="rounded-lg border border-forest/15 bg-paper px-2.5 py-1 text-xs font-medium text-charcoal transition-colors hover:border-forest/35 hover:bg-white"
-                      >
-                        {area}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-
-        {/* ── Closing Synthesis Callout ── */}
-        <div
-          className="relative mt-14 overflow-hidden rounded-[1.75rem] border border-forest/15 bg-forest p-8 text-center text-ivory sm:p-12 lg:p-14 shadow-lg"
-          {...revealProps(150)}
-        >
-          {/* Subtle decorative background wave */}
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 600 200"
-            className="pointer-events-none absolute -right-16 -top-10 w-[30rem] max-w-none opacity-10"
-            fill="none"
-          >
-            <path
-              d="M0 100 C 150 20, 300 180, 450 60 S 600 140, 650 80"
-              stroke="#B7C7B0"
-              strokeWidth="2"
-            />
-          </svg>
-
-          <div className="relative mx-auto max-w-3xl">
-            <span className="eyebrow text-xs font-bold uppercase tracking-[0.2em] text-sage">
-              Professional Direction
-            </span>
-            <p className="mt-4 font-serif text-xl sm:text-2xl leading-relaxed text-ivory/95">
-              "{careerClosingNote}"
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-/** Backward compatibility alias for any existing imports */
-export const Research = CareerDirection
 
 export function Contact() {
   const contactRows = [

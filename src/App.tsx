@@ -1,7 +1,7 @@
 import { SiteHeader } from './components/SiteHeader'
 import { About, Education, Hero } from './components/sections-intro'
 import { Experience, Projects } from './components/sections-work'
-import { Contact, Footer, CareerDirection, Skills } from './components/sections-close'
+import { Contact, Footer, Skills } from './components/sections-close'
 import { Ruler, useRevealOnScroll } from './components/ui'
 
 export function App() {
@@ -17,7 +17,6 @@ export function App() {
         <Experience />
         <Projects />
         <Skills />
-        <CareerDirection />
         <Contact />
       </main>
       <Footer />
