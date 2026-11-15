@@ -369,34 +369,89 @@ export function Education() {
         </header>
 
         {/* Kartu Detail Pendidikan */}
-        <article className="mt-14 grid overflow-hidden rounded-[1.5rem] border border-forest/15 bg-ivory md:grid-cols-12" {...revealProps(100)}>
-          <div className="graph-paper border-b border-forest/10 p-7 sm:p-10 md:col-span-5 md:border-r md:border-b-0">
-            <p className="eyebrow text-terracotta-ink">{education.period}</p>
-            <h3 className="mt-5 font-serif text-4xl leading-tight text-forest">{education.institution}</h3>
-            <p className="mt-3 text-lg font-semibold text-charcoal">{education.degree}</p>
-            <p className="mt-1 text-ink-soft">{education.department}</p>
-            <dl className="mt-10 flex gap-10">
-              <div>
-                <dt className="eyebrow text-[0.65rem] text-ink-soft">GPA</dt>
-                <dd className="mt-1 font-serif text-3xl text-forest">{education.gpa}</dd>
-              </div>
-              <div>
-                <dt className="eyebrow text-[0.65rem] text-ink-soft">Graduation</dt>
-                <dd className="mt-1 font-serif text-3xl text-forest">2026</dd>
-              </div>
-            </dl>
-          </div>
-          <div className="flex flex-col justify-between gap-8 p-7 sm:p-10 md:col-span-7">
+        <article
+          className="mt-14 grid overflow-hidden rounded-2xl border border-forest/15 bg-white shadow-sm md:grid-cols-12 lg:rounded-3xl"
+          {...revealProps(100)}
+        >
+          {/* Kolom Kiri: Forest Green Theme */}
+          <div className="flex flex-col justify-between bg-[#183D32] p-8 sm:p-10 lg:p-12 md:col-span-5 text-ivory">
             <div>
-              <p className="eyebrow text-ink-soft">Undergraduate thesis</p>
-              <blockquote className="mt-5 border-l-2 border-terracotta pl-6 font-serif text-2xl leading-snug text-forest sm:text-[2rem] sm:leading-[1.2]">
-                “{education.thesisTitle}.”
-              </blockquote>
+              {/* Dot & Periode */}
+              <div className="flex items-center gap-2 font-mono text-xs tracking-wider text-sage uppercase">
+                <span className="h-1.5 w-1.5 rounded-full bg-sage" />
+                <span>{education.period}</span>
+              </div>
+
+              {/* Nama Universitas */}
+              <h3 className="mt-6 font-serif text-3xl font-bold leading-tight text-ivory sm:text-4xl lg:text-[2.6rem]">
+                {education.institution}
+              </h3>
+
+              {/* Gelar & Jurusan */}
+              <p className="mt-4 font-sans text-base font-semibold text-ivory/95 sm:text-lg">
+                {education.degree}
+              </p>
+              <p className="mt-1 font-sans text-sm text-sage sm:text-base">
+                {education.department}
+              </p>
             </div>
-            <p className="max-w-xl leading-relaxed text-ink-soft">{education.thesisSummary}</p>
-            <a href="#projects" className="link-underline self-start font-semibold text-forest">
-              See related projects →
-            </a>
+
+            {/* Statistik Bawah: GPA & Kelulusan */}
+            <div className="mt-12 grid grid-cols-2 gap-6 pt-6 sm:mt-16">
+              <div>
+                <p className="font-mono text-[0.68rem] font-medium tracking-wider text-sage uppercase">
+                  CUMULATIVE GPA
+                </p>
+                <p className="mt-1.5 font-sans text-2xl font-bold text-ivory sm:text-3xl">
+                  {education.gpa}
+                </p>
+              </div>
+              <div>
+                <p className="font-mono text-[0.68rem] font-medium tracking-wider text-sage uppercase">
+                  GRADUATION
+                </p>
+                <p className="mt-1.5 font-sans text-2xl font-bold text-ivory sm:text-3xl">
+                  2026
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Kolom Kanan: White Theme */}
+          <div className="flex flex-col justify-between bg-white p-8 sm:p-10 lg:p-12 md:col-span-7">
+            <div>
+              {/* Tag Header Thesis */}
+              <div className="flex items-center gap-2 font-mono text-xs font-semibold tracking-wider text-[#252B27]/80 uppercase">
+                <span className="h-2 w-2 rounded-full bg-[#E05A36]" />
+                <span>UNDERGRADUATE THESIS RESEARCH</span>
+              </div>
+
+              {/* Judul Skripsi dengan Aksen Border Oranye/Terracotta */}
+              <div className="mt-6 border-l-4 border-[#E05A36] pl-4 sm:pl-5">
+                <h4 className="font-sans text-xl font-bold leading-snug tracking-tight text-[#18221D] sm:text-2xl">
+                  “{education.thesisTitle}.”
+                </h4>
+              </div>
+
+              {/* Ringkasan Skripsi */}
+              <p className="mt-5 font-sans text-sm leading-relaxed text-[#4F5751] sm:text-base">
+                {education.thesisSummary}
+              </p>
+            </div>
+
+            {/* Footer Kolom Kanan: Link ke Proyek & Nama Fakultas */}
+            <div className="mt-10 flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-neutral-100 sm:border-0 sm:pt-0">
+              <a
+                href="#project-irrigation"
+                className="inline-flex items-center gap-1.5 font-sans text-sm font-semibold text-[#E05A36] transition-colors hover:text-[#C74A27] sm:text-base"
+              >
+                <span>See related projects</span>
+                <span aria-hidden="true">→</span>
+              </a>
+              <span className="font-mono text-xs text-[#4F5751]/80 tracking-wide">
+                UGM Faculty of Agricultural Technology
+              </span>
+            </div>
           </div>
         </article>
       </div>
