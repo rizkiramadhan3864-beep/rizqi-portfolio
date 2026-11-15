@@ -2,41 +2,43 @@ import { useRef, useState } from 'react'
 import { experiences, profile, projects, type Partner, type Project, type ProjectActivity, type ProjectImage } from '../content/profile'
 import { ArrowIcon, handleImageFallback, revealProps } from './ui'
 
-/** Three tilted, overlapping photo frames on a soft green board, like a pinned collage. */
+/** Three tilted, overlapping polaroid photo frames on a soft sage green board. */
 function ExperienceCollage({ photos, label }: { photos: string[]; label: string }) {
   const frames = [
-    'left-[4%] top-[17%] w-[54%] rotate-[-6deg] z-20',
-    'right-[4%] top-[5%] w-[50%] rotate-[2deg] z-10',
-    'left-[22%] bottom-[4%] w-[52%] rotate-[3deg] z-30',
+    'left-[5%] top-[12%] w-[58%] rotate-[-5deg] z-20',
+    'right-[5%] top-[6%] w-[54%] rotate-[4deg] z-10',
+    'left-[18%] bottom-[5%] w-[56%] rotate-[-2deg] z-30',
   ]
 
   return (
     <div
-      className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl bg-sage-soft"
+      className="relative h-full w-full min-h-[360px] sm:min-h-[420px] lg:min-h-[500px] overflow-hidden"
       role="group"
       aria-label={`Documentation: ${label}`}
     >
+      {/* Decorative botanical leaves */}
       <svg
         aria-hidden="true"
         viewBox="0 0 40 40"
-        className="absolute left-[20%] top-[3%] w-12 rotate-[18deg] fill-current text-forest/20"
+        className="pointer-events-none absolute left-[10%] top-[4%] w-24 rotate-[18deg] fill-current text-[#183D32]/12"
       >
         <path d="M0 40C0 15 15 2 40 0 38 25 25 40 0 40Z" />
       </svg>
       <svg
         aria-hidden="true"
         viewBox="0 0 40 40"
-        className="absolute bottom-[14%] right-[6%] w-16 rotate-[-25deg] fill-current text-forest/20"
+        className="pointer-events-none absolute bottom-[8%] right-[8%] w-28 rotate-[-25deg] fill-current text-[#183D32]/12"
       >
         <path d="M0 40C0 15 15 2 40 0 38 25 25 40 0 40Z" />
       </svg>
 
+      {/* Polaroid photo cards (FULL COLOR, no grayscale) */}
       {frames.map((position, i) => (
         <div
           key={position}
-          className={`absolute bg-white p-[3%] shadow-[0_10px_24px_-10px_rgb(0_0_0/0.35)] ${position}`}
+          className={`absolute rounded-[2px] bg-white p-2.5 pb-6 sm:p-3 sm:pb-7 shadow-[0_12px_28px_-8px_rgba(0,0,0,0.35)] transition-transform duration-300 hover:scale-105 hover:z-40 ${position}`}
         >
-          <div className="aspect-square overflow-hidden bg-ivory">
+          <div className="aspect-square overflow-hidden bg-neutral-100">
             {photos[i] && (
               <img
                 src={photos[i]}
@@ -51,6 +53,9 @@ function ExperienceCollage({ photos, label }: { photos: string[]; label: string 
               />
             )}
           </div>
+          <p className="mt-2 text-center font-mono text-[0.6rem] font-semibold tracking-wider text-neutral-400 uppercase">
+            LOG 0{i + 1}
+          </p>
         </div>
       ))}
     </div>
@@ -59,70 +64,88 @@ function ExperienceCollage({ photos, label }: { photos: string[]; label: string 
 
 export function Experience() {
   return (
-    <section id="experience" aria-labelledby="experience-title" className="py-24 lg:py-32">
+    <section id="experience" aria-labelledby="experience-title" className="bg-[#18231E] py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <header className="mx-auto max-w-3xl text-center" {...revealProps()}>
           <h2
             id="experience-title"
-            className="font-serif text-[2.4rem] leading-[1.05] tracking-[-0.015em] text-forest sm:text-5xl lg:text-[3.6rem]"
+            className="font-serif text-[2.4rem] leading-[1.05] tracking-[-0.015em] text-ivory sm:text-5xl lg:text-[3.6rem]"
           >
             Experience
           </h2>
         </header>
 
-        <ol className="mt-14">
+        <div className="mt-14 space-y-12 sm:space-y-16 lg:space-y-20">
           {experiences.map((exp, i) => (
-            <li
+            <article
               key={exp.role + exp.period}
-              className="border-t border-rule py-14 first:border-t-0 first:pt-0 last:pb-0"
+              className="overflow-hidden rounded-[2.2rem] sm:rounded-[2.8rem] bg-white p-3 sm:p-4.5 shadow-2xl"
               {...revealProps(i * 40)}
             >
-              <article className="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
-                <div className="mx-auto w-full max-w-md lg:col-span-5 lg:max-w-none">
+              <div className="grid overflow-hidden rounded-[1.8rem] sm:rounded-[2.3rem] lg:grid-cols-12 items-stretch">
+                {/* Left: Polaroid Photo Collage */}
+                <div className="relative min-h-[360px] sm:min-h-[420px] lg:min-h-[500px] bg-[#DCE6DA] lg:col-span-5 overflow-hidden">
                   <ExperienceCollage photos={exp.photos ?? []} label={exp.role} />
                 </div>
 
-                <div className="lg:col-span-7">
-                  <div className="flex flex-wrap items-center gap-3">
-                    <p className="font-mono text-[0.78rem] text-ink-soft">{exp.period}</p>
-                    {exp.current && (
-                      <p className="inline-flex items-center gap-1.5 rounded-full bg-sage-soft px-2.5 py-1 font-mono text-[0.66rem] uppercase tracking-[0.12em] text-forest">
-                        <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-forest" />
-                        Current role
+                {/* Right: Experience Details */}
+                <div className="flex flex-col justify-between bg-[#183D32] p-8 sm:p-10 lg:col-span-7 lg:p-12 text-ivory">
+                  <div>
+                    {/* Period & Current Role Badge */}
+                    <div className="flex flex-wrap items-center gap-3">
+                      <p className="font-mono text-xs sm:text-[0.82rem] font-semibold tracking-wider text-sage uppercase">
+                        {exp.period}
                       </p>
-                    )}
-                  </div>
+                      {exp.current && (
+                        <span className="inline-flex items-center gap-1.5 rounded-full border border-sage/30 bg-[#253D32] px-3 py-1 font-mono text-[0.68rem] font-semibold uppercase tracking-wider text-sage">
+                          <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-[#B9E769]" />
+                          CURRENT ROLE
+                        </span>
+                      )}
+                    </div>
 
-                  <h3 className="mt-3 font-serif text-[1.9rem] leading-tight text-forest">{exp.role}</h3>
-                  <p className="mt-1.5 font-medium text-charcoal">{exp.organization}</p>
+                    {/* Role Title */}
+                    <h3 className="mt-4 font-serif text-3xl font-bold leading-tight text-ivory sm:text-4xl lg:text-[2.5rem]">
+                      {exp.role}
+                    </h3>
 
-                  <ul className="mt-5 space-y-2.5">
-                    {exp.points.map((point) => (
-                      <li key={point} className="flex gap-3 leading-relaxed text-ink-soft">
-                        <span aria-hidden="true" className="mt-[0.7em] h-px w-3 shrink-0 bg-terracotta" />
-                        {point}
-                      </li>
-                    ))}
-                  </ul>
+                    {/* Organization */}
+                    <p className="mt-2 font-sans text-base sm:text-lg font-medium text-white/90">
+                      {exp.organization}
+                    </p>
 
-                  <div className="mt-7">
-                    <p className="eyebrow text-[0.68rem] text-ink-soft">Skills gained</p>
-                    <ul className="mt-3 grid grid-cols-2 gap-2.5 sm:grid-cols-3">
-                      {(exp.skills ?? []).map((skill) => (
-                        <li
-                          key={skill}
-                          className="rounded-xl border border-forest/15 bg-paper px-3.5 py-3 text-sm font-semibold leading-snug text-forest"
-                        >
-                          {skill}
+                    {/* Bullet points */}
+                    <ul className="mt-6 space-y-3">
+                      {exp.points.map((point) => (
+                        <li key={point} className="flex items-start gap-3 text-sm sm:text-base leading-relaxed text-sage/90">
+                          <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#B9E769]/80" />
+                          <span>{point}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
+
+                  {/* Divider & Skills */}
+                  <div className="mt-8 pt-6 border-t border-white/15">
+                    <p className="font-mono text-xs font-bold tracking-widest text-[#E05A36] uppercase">
+                      SKILLS GAINED & APPLIED
+                    </p>
+                    <div className="mt-3.5 flex flex-wrap gap-2 sm:gap-2.5">
+                      {(exp.skills ?? []).map((skill) => (
+                        <span
+                          key={skill}
+                          className="rounded-full border border-white/15 bg-white/12 px-4 py-1.5 text-xs sm:text-sm font-medium text-white/95 backdrop-blur-xs transition-colors hover:bg-white/20"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-              </article>
-            </li>
+              </div>
+            </article>
           ))}
-        </ol>
+        </div>
       </div>
     </section>
   )
