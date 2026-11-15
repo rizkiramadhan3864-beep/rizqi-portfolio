@@ -554,14 +554,13 @@ export const skillCategories: SkillCategory[] = [
   {
     id: 'engineering-technology',
     label: 'Engineering & Technology',
-    description: 'IoT systems, agricultural automation, machinery design, and sensor calibration',
+    description: 'IoT systems, agricultural automation, and sensor calibration',
     iconPath: 'M12 2L3 7v10l9 5 9-5V7l-9-5z M12 12v10 M12 12L3 7 M12 12l9-5',
     competencies: [
       'Internet of Things (IoT)',
       'Agricultural Automation',
       'Smart Irrigation Systems',
       'Sensor Calibration',
-      'Agricultural Machinery Design',
       'System Development',
     ],
     tools: [
@@ -573,12 +572,11 @@ export const skillCategories: SkillCategory[] = [
   {
     id: 'data-technical-analysis',
     label: 'Data & Technical Analysis',
-    description: 'Environmental monitoring, water estimation, statistical evaluation, and reporting',
+    description: 'Data monitoring, statistical evaluation, and technical reporting',
     iconPath: 'M3 12h4l3-8 4 16 3-8h4',
     competencies: [
-      'Agricultural Data Analysis',
-      'Environmental Data Monitoring',
-      'Water Requirement Estimation',
+      'Data Analysis',
+      'Data Monitoring',
       'Sensor Performance Evaluation',
       'Statistical Analysis',
       'Technical Documentation',
@@ -593,16 +591,16 @@ export const skillCategories: SkillCategory[] = [
   {
     id: 'management-communication',
     label: 'Management & Communication',
-    description: 'Project coordination, team leadership, research presentation, and digital content',
+    description: 'Project coordination, stakeholder communication, and work planning',
     iconPath: 'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2 M9 7a4 4 0 1 0 0-8 4 4 0 0 0 0 8z M23 21v-2a4 4 0 0 0-3-3.87 M16 3.13a4 4 0 0 1 0 7.75',
     competencies: [
       'Project Coordination',
-      'Team Leadership',
-      'Public Speaking',
+      'Work Planning & Scheduling',
+      'Stakeholder Communication',
       'Research Presentation',
       'Event Management',
-      'Digital Content Management',
-      'Social Media Management',
+      'Technical Documentation',
+      'Stakeholder Engagement',
       'Team Collaboration',
     ],
     tools: [
