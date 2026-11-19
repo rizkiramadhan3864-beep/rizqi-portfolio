@@ -237,13 +237,13 @@ export function About() {
           </div>
 
           <div className="space-y-6 md:col-span-7" {...revealProps(160)}>
-            <p className="font-sans text-2xl font-bold leading-snug tracking-tight text-[#16201A] sm:text-[1.75rem]">
+            <p className="font-sans text-2xl font-bold leading-snug tracking-tight text-justify text-[#16201A] sm:text-[1.75rem]">
               I'm an Agricultural Engineering graduate from Universitas Gadjah Mada with an academic background in agricultural systems, engineering applications, and applied research.
             </p>
-            <p className="text-base leading-relaxed text-ink-soft sm:text-[1.05rem]">
+            <p className="text-base leading-relaxed text-justify text-ink-soft sm:text-[1.05rem]">
               My experience includes crop production, agricultural operations, technical monitoring, and data analysis. I've worked with IoT-based irrigation systems, sensor testing and calibration, and environmental monitoring in plant factory and smart greenhouse environments.
             </p>
-            <p className="text-base leading-relaxed text-ink-soft sm:text-[1.05rem]">
+            <p className="text-base leading-relaxed text-justify text-ink-soft sm:text-[1.05rem]">
               I'm interested in applying my engineering background and analytical approach to technical and operational work, supporting sound decision-making and effective processes through structured analysis and practical execution.
             </p>
             <div className="flex flex-wrap items-center gap-3.5 pt-4">
