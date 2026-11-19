@@ -252,6 +252,8 @@ export type Project = {
   partners?: Partner[]
   /** Up to 4 photos are shown; 1, 2, 3 or 4 photos lay out automatically with equal sizes */
   images: ProjectImage[]
+  /** Optional custom images to display on the project card on the main page (if omitted, uses first 4 from images) */
+  cardImages?: ProjectImage[]
   overview: string
   challenge: string
   approach: string
@@ -290,6 +292,12 @@ export const projects: Project[] = [
       { src: '/projects/irrigation-6.png', caption: 'Automated water distribution in field' },
       { src: '/projects/irrigation-7.png', caption: 'Data acquisition unit and logger' },
       { src: '/projects/irrigation-8.png', caption: 'Field validation and sensor evaluation' },
+    ],
+    cardImages: [
+      { src: '/projects/irrigation-1.png', caption: 'Sprinkler irrigation system setup' },
+      { src: '/projects/irrigation-2.png', caption: 'Soil moisture sensor installation' },
+      { src: '/projects/irrigation-5.png', caption: 'Field monitoring and experimental plot' },
+      { src: '/projects/irrigation-4.png', caption: 'Agrotropikal National Seminar presentation' },
     ],
     overview:
       'This project focused on the development and field evaluation of an Internet of Things (IoT)-based automatic sprinkler irrigation system designed to improve water management on coastal sandy land. The system integrates soil moisture sensors, a microcontroller, and an automated sprinkler mechanism to regulate irrigation based on real-time soil moisture conditions. Implemented in coastal agricultural fields in Karangwuni, Kulon Progo, Yogyakarta, the project aimed to reduce dependence on manual irrigation practices and support more efficient water application through sensor-based automation.',

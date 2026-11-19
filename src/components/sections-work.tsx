@@ -873,7 +873,8 @@ function ProjectCollageGrid({
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const dialogRef = useRef<HTMLDialogElement>(null)
   const titleId = `project-${project.id}-title`
-  const { visible, markFailed } = useVisibleImages(project.images)
+  const cardImages = project.cardImages ?? project.images
+  const { visible, markFailed } = useVisibleImages(cardImages)
 
   return (
     <article
