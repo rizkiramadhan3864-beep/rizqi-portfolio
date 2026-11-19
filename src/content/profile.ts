@@ -396,6 +396,12 @@ export const projects: Project[] = [
       { src: '/projects/mixer-7.png', caption: 'Structural frame and material selection' },
       { src: '/projects/mixer-8.png', caption: 'Economic analysis and feasibility' },
     ],
+    cardImages: [
+      { src: '/projects/mixer-1.png', caption: 'Liquid fertilizer mixing machine design' },
+      { src: '/projects/mixer-5.png', caption: 'Motor and gearbox transmission mechanism' },
+      { src: '/projects/mixer-3.png', caption: 'Propeller impeller and tank design' },
+      { src: '/projects/mixer-6.png', caption: 'Turbidity sensor monitoring concept' },
+    ],
     overview:
       'This project focused on designing a liquid fertilizer mixing machine to improve the efficiency and effectiveness of fertilizer preparation for potato cultivation. The proposed machine was developed to address the limitations of manual mixing, which can require considerable time and labor while producing inconsistent fertilizer solutions. The design incorporated a mechanical stirring system with a 240-liter working capacity, intended to support more consistent fertilizer preparation and improve operational efficiency for horticultural applications.',
     challenge:
