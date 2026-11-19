@@ -451,7 +451,7 @@ export const projects: Project[] = [
     ],
     cardImages: [
       { src: '/projects/org-agrotropikal-1.png', caption: 'Agrotropikal National Seminar — presentation' },
-      { src: '/projects/org-agrotropikal-2.png', caption: 'Seminar audience and academic forum' },
+      { src: '/projects/org-pln-sustainaction-1.jpg', caption: 'PLN SustainAction 2026 — 2nd Place Award Certificate' },
       { src: '/projects/org-agrotropikal-3.png', caption: 'Research poster and materials' },
       { src: '/projects/org-perteta-1.png', caption: 'PERTETA Seminar logistics preparation' },
     ],
