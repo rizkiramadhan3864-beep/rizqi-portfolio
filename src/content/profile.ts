@@ -465,6 +465,7 @@ export const projects: Project[] = [
       'Presented IoT-based irrigation research at the Agrotropikal National Seminar 2026, contributing to academic knowledge dissemination.',
       'Supported logistics for the PERTETA National Seminar with 300+ participants, coordinating resources and event preparations.',
       'Managed the PERMATETA UGM Instagram account (2,000+ followers), publishing approximately 10 content pieces per month over two years.',
+      'Achieved 2nd Place in the Sustainable Village category at PLN SustainAction 2026 as part of the AURORA project team.',
     ],
     activities: [
       {
@@ -495,6 +496,16 @@ export const projects: Project[] = [
           'Served as a member of the Communication and Information division of PERMATETA UGM, responsible for managing the organization\'s digital communication and social media presence. Managed the organization\'s Instagram account, which had more than 2,000 followers, by planning and publishing approximately 10 content pieces per month. Activities included brainstorming content ideas, preparing publication schedules, organizing information for digital posts, and maintaining consistency in the delivery of organizational updates. The role involved translating organizational activities and information into accessible digital content to maintain audience awareness and engagement. Through regular content planning and account management, I contributed to strengthening the organization\'s online presence and supporting communication between the organization and its members and broader audience.',
         images: [
           { src: '/projects/org-permateta-1.png', caption: 'PERMATETA UGM organizational activities' },
+        ],
+      },
+      {
+        title: '2nd Place Winner – PLN SustainAction 2026',
+        role: 'November 2026',
+        description:
+          'Recognized as part of the AURORA project team, which achieved 2nd Place in the Sustainable Village category at PLN SustainAction 2026, a national sustainability innovation competition organized by PT PLN (Persero). The competition provides a platform for communities, academic teams, and other organizations to present innovative initiatives addressing environmental, social, and economic challenges while promoting sustainable community development. This achievement recognizes AURORA as one of the selected initiatives in the Sustainable Village category. As part of the award, the winning project receives program development mentoring and full funding support from PLN for further implementation, creating an opportunity to expand its impact and long-term sustainability.',
+        images: [
+          { src: '/projects/org-pln-sustainaction-1.jpg', caption: 'Award Certificate — 2nd Place Sustainable Village, PLN SustainAction 2026' },
+          { src: '/projects/org-pln-sustainaction-2.jpg', caption: 'Awarding ceremony on stage with the 2nd Place award board' },
         ],
       },
     ],

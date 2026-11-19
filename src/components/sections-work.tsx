@@ -672,6 +672,8 @@ function ChipList({ items }: { items: string[] }) {
 /** Renders one organizational activity: heading + role + description paragraph + photo(s) */
 function ActivityBlock({ activity, index }: { activity: ProjectActivity; index: number }) {
   const isSingleImage = activity.images.length === 1
+  const isTwoImages = activity.images.length === 2
+
   return (
     <div className="border-t border-rule pt-8 space-y-5">
       <div>
@@ -697,6 +699,39 @@ function ActivityBlock({ activity, index }: { activity: ProjectActivity; index: 
           {activity.images[0].caption && (
             <p className="text-center text-xs text-ink-soft/60 italic">{activity.images[0].caption}</p>
           )}
+        </div>
+      ) : isTwoImages ? (
+        /* 2-image side-by-side collage */
+        <div className="rounded-2xl border border-forest/12 bg-paper p-5 sm:p-7 shadow-sm">
+          <div className="mb-4">
+            <h4 className="font-serif text-xl sm:text-2xl font-bold text-forest">{activity.title}</h4>
+            <p className="mt-1 text-sm text-ink-soft">Photo documentation</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+            {activity.images.map((img, imgIdx) => (
+              <div
+                key={img.src}
+                className="group relative aspect-[4/3] overflow-hidden rounded-xl border border-forest/15 bg-sage-soft/30 transition-all hover:border-forest/40 hover:shadow-md"
+              >
+                <img
+                  src={img.src}
+                  alt={img.caption || `Documentation ${imgIdx + 1}`}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  onError={(e) => {
+                    handleImageFallback(e, () => {
+                      e.currentTarget.style.display = 'none'
+                    })
+                  }}
+                />
+                {img.caption && (
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-charcoal/85 via-charcoal/40 to-transparent p-2.5 pt-6 text-[0.72rem] text-ivory opacity-0 transition-opacity duration-300 group-hover:opacity-100 sm:text-xs">
+                    {img.caption}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       ) : (
         <ProjectCollageGrid
