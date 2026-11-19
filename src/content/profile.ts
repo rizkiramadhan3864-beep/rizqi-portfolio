@@ -449,6 +449,12 @@ export const projects: Project[] = [
       { src: '/projects/org-agrotropikal-3.png', caption: 'Research poster and materials' },
       { src: '/projects/org-agrotropikal-4.png', caption: 'Post-presentation Q&A session' },
     ],
+    cardImages: [
+      { src: '/projects/org-agrotropikal-1.png', caption: 'Agrotropikal National Seminar — presentation' },
+      { src: '/projects/org-agrotropikal-2.png', caption: 'Seminar audience and academic forum' },
+      { src: '/projects/org-agrotropikal-3.png', caption: 'Research poster and materials' },
+      { src: '/projects/org-perteta-1.png', caption: 'PERTETA Seminar logistics preparation' },
+    ],
     overview:
       'Participated in various academic and organizational activities at different levels, taking on responsibilities that required adaptability, effective communication, and collaboration. The experiences ranged from presenting research findings to an academic audience at a national seminar, supporting the operational and logistical requirements of a large-scale academic event, to managing digital communication for a student organization.',
     challenge:
