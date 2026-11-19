@@ -236,11 +236,17 @@ export function About() {
             <AboutCollage />
           </div>
 
-          <div className="space-y-7 md:col-span-7" {...revealProps(160)}>
-            <p className="font-sans text-lg sm:text-xl lg:text-[1.38rem] font-bold leading-relaxed sm:leading-[1.7] text-justify text-[#16201A]">
-              Agricultural Engineering graduate from Universitas Gadjah Mada with experience in crop production, agricultural operations, technical monitoring, and data analysis. Experienced in IoT-based irrigation systems, sensor testing and calibration, data analysis, and environmental monitoring across plant factory and smart greenhouse environments. Interested in applying agricultural technology, analytical problem-solving, and process improvement to support efficient and sustainable operations.
+          <div className="space-y-6 md:col-span-7" {...revealProps(160)}>
+            <p className="font-sans text-2xl font-bold leading-snug tracking-tight text-[#16201A] sm:text-[1.75rem]">
+              I'm an Agricultural Engineering graduate from Universitas Gadjah Mada with an academic background in agricultural systems, engineering applications, and applied research.
             </p>
-            <div className="flex flex-wrap items-center gap-3.5 pt-2">
+            <p className="text-base leading-relaxed text-ink-soft sm:text-[1.05rem]">
+              My experience includes crop production, agricultural operations, technical monitoring, and data analysis. I've worked with IoT-based irrigation systems, sensor testing and calibration, and environmental monitoring in plant factory and smart greenhouse environments.
+            </p>
+            <p className="text-base leading-relaxed text-ink-soft sm:text-[1.05rem]">
+              I'm interested in applying my engineering background and analytical approach to technical and operational work, supporting sound decision-making and effective processes through structured analysis and practical execution.
+            </p>
+            <div className="flex flex-wrap items-center gap-3.5 pt-4">
               <a
                 href="#contact"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-forest px-7 py-3 text-[0.95rem] font-semibold text-white shadow-xs transition-all duration-300 hover:bg-forest-deep active:scale-95"
