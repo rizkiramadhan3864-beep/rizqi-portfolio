@@ -237,14 +237,8 @@ export function About() {
           </div>
 
           <div className="space-y-6 md:col-span-7" {...revealProps(160)}>
-            <p className="font-sans text-2xl font-bold leading-snug tracking-tight text-[#16201A] sm:text-[1.75rem]">
-              I am an Agricultural Engineering graduate from Universitas Gadjah Mada, with an academic background in agricultural and biosystems engineering and an interest in practical, technology-driven agricultural solutions.
-            </p>
-            <p className="text-base leading-relaxed text-ink-soft sm:text-[1.05rem]">
-              Through academic projects and practical experience, I have explored agricultural production, controlled-environment cultivation, smart agriculture, IoT-based agricultural systems, and field research. My experience includes crop and environmental monitoring, field documentation, soil moisture sensor calibration, and coordinating daily plant factory operations.
-            </p>
-            <p className="text-base leading-relaxed text-ink-soft sm:text-[1.05rem]">
-              I am interested in applying engineering principles, analytical thinking, and problem-solving to improve agricultural productivity, operational efficiency, and sustainable plantation management.
+            <p className="font-sans text-base font-bold leading-relaxed text-[#16201A] sm:text-[1.05rem]">
+              Agricultural Engineering graduate from Universitas Gadjah Mada with experience in crop production, agricultural operations, technical monitoring, and data analysis. Experienced in IoT-based irrigation systems, sensor testing and calibration, data analysis, and environmental monitoring across plant factory and smart greenhouse environments. Interested in applying agricultural technology, analytical problem-solving, and process improvement to support efficient and sustainable operations.
             </p>
             <div className="flex flex-wrap items-center gap-3.5 pt-4">
               <a
