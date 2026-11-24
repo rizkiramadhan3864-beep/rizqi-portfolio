@@ -482,7 +482,7 @@ export const projects: Project[] = [
       },
       {
         title: 'PERTETA National Seminar',
-        role: 'Logistics Division · 2024',
+        role: 'Logistics Division · 2025',
         description:
           'Contributed to the organizing committee of the PERTETA National Seminar as part of the logistics division, supporting the preparation and execution of an academic event attended by more than 300 participants. Responsibilities included coordinating logistical requirements, preparing event facilities and supporting equipment, managing resource distribution, and ensuring that the necessary materials were available throughout the event. The role required close coordination with other committee divisions to align logistical preparations with the event schedule and operational needs. By supporting both pre-event preparation and on-site activities, I helped maintain an organized event environment and ensure that logistical arrangements supported the smooth execution of the seminar.',
         images: [
